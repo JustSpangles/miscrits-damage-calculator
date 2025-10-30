@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Miscrits — Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+body { background:#0E0F12; color:#e5e7eb; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; }
+      .card { background:#14161A; border:1px solid #2B2F36; border-radius:1rem; }
+      .chip { border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600; display:inline-flex; align-items:center; }
+      .compact-input { height:44px; border-radius:.75rem; background:#111315; border:1px solid #2B2F36; padding:0 12px; color:#e5e7eb }
+      input[type=number]::-webkit-inner-spin-button { opacity:.6 }
+      .suggestions { background:#0f1114; border:1px solid #2B2F36; border-radius:8px; max-height:240px; overflow:auto; }
+      .suggestion-item:hover { background:#111316; }
+      
+      /* New style for Modal Overlay */
+      .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 50; display: flex; justify-content: center; align-items: center; }
+      .modal-content { background: #0E0F12; border: 1px solid #2B2F36; border-radius: 1rem; width: 95%; max-width: 500px; padding: 1.5rem; max-height: 90vh; overflow-y: auto; }
+      
+      /* New style for Toggle Switch */
+      .toggle-switch { width: 50px; height: 26px; background: #2B2F36; border-radius: 9999px; position: relative; cursor: pointer; transition: background 0.2s; }
+      .toggle-switch.checked { background: #D946EF; }
+      .toggle-switch-handle { width: 22px; height: 22px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: transform 0.2s; }
+      .toggle-switch.checked .toggle-switch-handle { transform: translateX(24px); }
+    </style>
+    <script type="module" crossorigin src="/miscrits-damage-calculator/assets/index-zsu75RJ2.js"></script>
+  </head>
+  <body>
+    <div id="root" class="p-6"></div>
+  </body>
+</html>
