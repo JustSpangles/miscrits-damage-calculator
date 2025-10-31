@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+
 // === True Damage (suma nominal, NO por hit) ===============================
 function getTrueDamage(attack) {
   const raw = attack?.trueDamage ?? attack?.extraDamage ?? 0;
@@ -95,22 +96,21 @@ const saveCustomMiscrits = (customList) => {
 
 // Componente para el Toggle Switch
 const ToggleSwitch = ({ checked, onChange, label }) => (
-    <div className="flex items-center gap-3">
-        <label htmlFor={`toggle-${label}`} className="text-sm text-zinc-400">{label}</label>
-        <div id={`toggle-${label}`} className={`toggle-switch ${checked ? 'checked' : ''}`} onClick={onChange}>
-            <div className="toggle-switch-handle"></div>
-        </div>
+  <div className="flex items-center gap-3">
+    <label htmlFor={`toggle-${label}`} className="text-sm text-zinc-400">{label}</label>
+    <div id={`toggle-${label}`} className={`toggle-switch ${checked ? 'checked' : ''}`} onClick={onChange}>
+      <div className="toggle-switch-handle"></div>
     </div>
+  </div>
 );
 
-
-// Componente estable para el input de estadísticas (corrige el problema de focus)
+// Input de stats global estable (se usa en el customizer)
 const CustomStatInput = React.memo(({ statKey, value, onChange, isInvalid }) => (
-    <div>
-      <label className="block text-xs text-zinc-400">{statKey}</label>
-      <input type="number" value={value} onChange={onChange} min="0" required
-        className={`w-full h-10 rounded-md bg-[#0f1114] px-3 text-zinc-10 ${isInvalid ? 'border-red-500' : 'border border-[#26292d]'}`} />
-    </div>
+  <div>
+    <label className="block text-xs text-zinc-400">{statKey}</label>
+    <input type="number" value={value} onChange={onChange} min="0" required
+      className={`w-full h-10 rounded-md bg-[#0f1114] px-3 text-zinc-10 ${isInvalid ? 'border-red-500' : 'border border-[#26292d]'}`} />
+  </div>
 ));
 
 /* ---------- SearchableSelect (typeahead) --------- */
@@ -130,7 +130,6 @@ function SearchableSelect({ items, value, onChange, placeholder, disabled }){
   useEffect(()=>{ 
     setQuery(selectedItem ? selectedItem.name : ''); 
   },[selectedItem]);
-  
 
   const filtered = useMemo(()=>{
     if (!query) return items;
@@ -156,8 +155,8 @@ function SearchableSelect({ items, value, onChange, placeholder, disabled }){
             <div key={it.name} className="suggestion-item flex items-center justify-between p-3 cursor-pointer" onClick={()=>{ onChange(it.name); setOpen(false); }}>
               <div className="pr-4">
                 <div className="font-medium text-zinc-100">
-                    {it.name}
-                    {it.isCustom && it.baseName && <span className="text-sm font-normal text-zinc-400 ml-2">({it.baseName})</span>}
+                  {it.name}
+                  {it.isCustom && it.baseName && <span className="text-sm font-normal text-zinc-400 ml-2">({it.baseName})</span>}
                 </div>
               </div>
               <div className="flex gap-2">
@@ -175,11 +174,18 @@ function SearchableSelect({ items, value, onChange, placeholder, disabled }){
 /* ---------- MiscritPanel (Display) ---------- */
 function MiscritPanel({ title, miscrit, stats, setStats, disabled, onRefresh }){
   const elements = normalizeElements(miscrit?.elements || miscrit?.type || miscrit?.element || []);
+
+  // StatInput local con color opcional en label
   const StatInput = useCallback(({ statKey, value, onChange, labelClassName }) => (
-  <div>
-    <label className={`block text-xs ${labelClassName || 'text-zinc-400'}`}>{statKey}</label>
-      <input type="number" value={value} onChange={onChange} disabled={disabled}
-        className="w-full h-10 rounded-md bg-[#0f1114] border border-[#26292d] px-3 text-zinc-10 disabled:opacity-60 disabled:cursor-not-allowed" />
+    <div>
+      <label className={`block text-xs ${labelClassName || 'text-zinc-400'}`}>{statKey}</label>
+      <input
+        type="number"
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        className="w-full h-10 rounded-md bg-[#0f1114] border border-[#26292d] px-3 text-zinc-10 disabled:opacity-60 disabled:cursor-not-allowed"
+      />
     </div>
   ), [disabled]);
 
@@ -196,69 +202,234 @@ function MiscritPanel({ title, miscrit, stats, setStats, disabled, onRefresh }){
                 {miscrit?.isCustom && !miscrit?.baseName && <span className="text-sm font-normal text-fuchsia-400 ml-2">(Custom)</span>}
               </h3>
             </div>
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
               {elements.map((e,i)=>(<Chip key={i} tone={toneByElement(e)}>{e}</Chip>))}
+              {/* Botón Refresh minimal */}
+              <button
+                onClick={onRefresh}
+                disabled={disabled || !miscrit}
+                className="p-1 rounded hover:bg-[#202227] text-zinc-300 disabled:opacity-50"
+                title="Reset to base stats"
+                aria-label="Reset to base stats"
+              >
+                {/* ícono refresh */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0114.13-3.36L23 10"></path>
+                  <path d="M20.49 15a9 9 0 01-14.13 3.36L1 14"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Orden y colores solicitados */}
       <div className="grid grid-cols-2 gap-3">
-      <StatInput statKey="HP"  labelClassName="text-green-400"  value={stats.HP}  onChange={(e)=>setStats(p=>({...p, HP:  Number(e.target.value||0)}))} />
-      <StatInput statKey="SPD" labelClassName="text-yellow-300" value={stats.SPD} onChange={(e)=>setStats(p=>({...p, SPD: Number(e.target.value||0)}))} />
-      <StatInput statKey="EA"  labelClassName="text-rose-300"   value={stats.EA}  onChange={(e)=>setStats(p=>({...p, EA:  Number(e.target.value||0)}))} />
-      <StatInput statKey="PA"  labelClassName="text-blue-300"   value={stats.PA}  onChange={(e)=>setStats(p=>({...p, PA:  Number(e.target.value||0)}))} />
-      <StatInput statKey="ED"  labelClassName="text-rose-500"   value={stats.ED}  onChange={(e)=>setStats(p=>({...p, ED:  Number(e.target.value||0)}))} />
-      <StatInput statKey="PD"  labelClassName="text-blue-500"   value={stats.PD}  onChange={(e)=>setStats(p=>({...p, PD:  Number(e.target.value||0)}))} />
+        {/* Fila 1 */}
+        <StatInput statKey="HP"  labelClassName="text-green-400"
+          value={stats.HP}  onChange={(e)=>setStats(p => ({...p, HP:  Number(e.target.value||0)}))} />
+        <StatInput statKey="SPD" labelClassName="text-yellow-300"
+          value={stats.SPD} onChange={(e)=>setStats(p => ({...p, SPD: Number(e.target.value||0)}))} />
+        {/* Fila 2 */}
+        <StatInput statKey="EA"  labelClassName="text-rose-300"
+          value={stats.EA}  onChange={(e)=>setStats(p => ({...p, EA:  Number(e.target.value||0)}))} />
+        <StatInput statKey="PA"  labelClassName="text-blue-300"
+          value={stats.PA}  onChange={(e)=>setStats(p => ({...p, PA:  Number(e.target.value||0)}))} />
+        {/* Fila 3 */}
+        <StatInput statKey="ED"  labelClassName="text-rose-500"
+          value={stats.ED}  onChange={(e)=>setStats(p => ({...p, ED:  Number(e.target.value||0)}))} />
+        <StatInput statKey="PD"  labelClassName="text-blue-500"
+          value={stats.PD}  onChange={(e)=>setStats(p => ({...p, PD:  Number(e.target.value||0)}))} />
+      </div>
     </div>
-  </div>
-</div>
-);
+  );
 }
+
+/* ---------- Attack item ---------- */
+const AttackItemCompact = ({ atk, onClick, active, disabled }) => (
+  <li>
+    <button onClick={onClick} disabled={disabled} className={`w-full text-left rounded-xl border px-4 py-3 transition ${active ? 'border-fuchsia-600/60 bg-fuchsia-600/10' : 'border-[#2B2F36] hover:border-zinc-500/60 bg-[#14161A]'} disabled:opacity-60 disabled:cursor-not-allowed`}>
+      <div className="flex items-center gap-2">
+        <span className={`chip ${toneByElement(atk.element)}`}>{(atk.element||'physical')}</span>
+        <p className="font-medium text-zinc-100">{atk.name}</p>
+      </div>
+      <p className="text-sm text-zinc-400 mt-1">AP: {atk.ap}{(atk.hits||1)>1 ? ` × ${atk.hits}` : ''}</p>
+    </button>
+  </li>
+);
+
+
+/* ---------- Miscrit Customizer Modal (Add/Modify) ---------- */
+function MiscritCustomizerModal({ miscrits, baseMiscrits, defaultStats, onSave, onClose, miscritToEdit }){
+  const isEditing = !!miscritToEdit;
+
+  const [tempBaseName, setTempBaseName] = useState(isEditing ? miscritToEdit.baseName : '');
+  const [customName, setCustomName] = useState(isEditing ? miscritToEdit.name : '');
+  const [customStats, setCustomStats] = useState(isEditing ? miscritToEdit.stats : defaultStats);
+  const [error, setError] = useState(null);
+
+  const baseMiscrit = useMemo(() => baseMiscrits.find(m => m.name === tempBaseName), [baseMiscrits, tempBaseName]);
+
+  useEffect(() => {
+    if (!isEditing && baseMiscrit) {
+      setCustomStats({ ...(baseMiscrit.stats || defaultStats) });
+      setCustomName(baseMiscrit.name);
+    }
+    if (isEditing && miscritToEdit) {
+      setCustomStats({ ...miscritToEdit.stats });
+    }
+  }, [baseMiscrit, isEditing, miscritToEdit]);
+  
+  const handleStatChange = (statKey, value) => {
+    const numValue = Math.max(0, Number(value||0));
+    setCustomStats(p => ({...p, [statKey]: numValue}));
+    setError(null);
+  };
+
+  const handleSave = () => {
+    setError(null);
+
+    const baseName = tempBaseName;
+    if (!baseName) { setError('You must select a base Miscrit.'); return; }
+    
+    const statsValid = Object.values(customStats).every(v => v !== null && v !== undefined && v >= 0);
+    if (!statsValid) { setError('All 6 stats (PA, EA, PD, ED, SPD, HP) must be non-negative numbers.'); return; }
+
+    let finalName = (customName||'').trim().slice(0, 25);
+    if (!finalName) {
+        finalName = `${baseName} (Own)`;
+    }
+
+    // Check for conflict
+    const isNameTaken = miscrits.some(m => m.name === finalName && (!isEditing || m.name !== miscritToEdit.name));
+    if (isNameTaken) {
+        setError(`A Miscrit named "${finalName}" already exists. Please choose a different custom name.`);
+        return;
+    }
+
+    const baseData = baseMiscrits.find(m => m.name === baseName);
+    const newCustomMiscrit = {
+      ...baseData,
+      name: finalName,
+      stats: customStats,
+      baseName: baseData.name,
+      isCustom: true
+    };
+
+    onSave(newCustomMiscrit);
+    onClose();
+  };
+  
+  const handleCustomNameChange = (e) => {
+    setCustomName(e.target.value.slice(0, 25));
+    setError(null);
+  }
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <h2 className="text-xl font-semibold mb-6">{isEditing ? 'Modify Custom Miscrit Profile' : 'Create Custom Miscrit Profile'}</h2>
+        
+        {error && (
+          <div className="bg-red-900/40 border border-red-500/80 p-3 rounded-lg text-sm mb-4">
+            {error}
+          </div>
+        )}
+
+        <div className="mb-4">
+          <label className="block text-sm text-zinc-400 mb-1">1. Base Miscrit *</label>
+          <SearchableSelect 
+            items={baseMiscrits.filter(m => !m.isCustom)}
+            value={tempBaseName} 
+            onChange={setTempBaseName} 
+            placeholder="Search base Miscrit..." 
+            disabled={isEditing}
+          />
+        </div>
+        
+        <div className="mb-6">
+          <label className="block text-sm text-zinc-400 mb-1">2. Custom Name (Max 25 chars)</label>
+          <input 
+            type="text" 
+            value={customName} 
+            onChange={handleCustomNameChange}
+            placeholder={tempBaseName ? `${tempBaseName} (Own)` : 'Custom Name'}
+            disabled={!baseMiscrit}
+            className="compact-input w-full"
+            maxLength={25}
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-sm text-zinc-400 mb-3">3. Modified Stats *</label>
+          <div className="grid grid-cols-2 gap-3">
+            <CustomStatInput statKey="EA" value={customStats.EA} isInvalid={customStats.EA<0} onChange={(e)=>handleStatChange('EA', e.target.value)} />
+            <CustomStatInput statKey="PA" value={customStats.PA} isInvalid={customStats.PA<0} onChange={(e)=>handleStatChange('PA', e.target.value)} />
+            <CustomStatInput statKey="ED" value={customStats.ED} isInvalid={customStats.ED<0} onChange={(e)=>handleStatChange('ED', e.target.value)} />
+            <CustomStatInput statKey="PD" value={customStats.PD} isInvalid={customStats.PD<0} onChange={(e)=>handleStatChange('PD', e.target.value)} />
+            <CustomStatInput statKey="SPD" value={customStats.SPD} isInvalid={customStats.SPD<0} onChange={(e)=>handleStatChange('SPD', e.target.value)} />
+            <CustomStatInput statKey="HP" value={customStats.HP} isInvalid={customStats.HP<0} onChange={(e)=>handleStatChange('HP', e.target.value)} />
+          </div>
+        </div>
+
+        <div className="flex justify-end gap-3 pt-4 border-t border-[#2B2F36]">
+          <button onClick={onClose} className="px-4 py-2 rounded-md text-zinc-300 hover:bg-[#202227] transition">Cancel</button>
+          <button onClick={handleSave} disabled={!baseMiscrit || !!error} className="px-4 py-2 rounded-md bg-fuchsia-600 text-white font-medium disabled:opacity-50 transition">
+            {isEditing ? 'Save Changes' : 'Save Profile'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- Custom Miscrits List Modal (Management) ---------- */
 function CustomMiscritsListModal({ customMiscrits, onModify, onDelete, onClose }) {
-    return (
-        <div className="modal-overlay">
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <h2 className="text-xl font-semibold mb-6">My Custom Miscrit Profiles ({customMiscrits.length})</h2>
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <h2 className="text-xl font-semibold mb-6">My Custom Miscrit Profiles ({customMiscrits.length})</h2>
 
-                {customMiscrits.length === 0 ? (
-                    <div className="text-center py-10 text-zinc-500">You have no custom miscrit profiles saved locally.</div>
-                ) : (
-                    <ul className="space-y-3">
-                        {customMiscrits.map(m => (
-                            <li key={m.name} className="flex items-center justify-between p-3 border border-[#2B2F36] rounded-lg bg-[#14161A]">
-                                <div>
-                                    <div className="font-medium text-zinc-100">
-                                        {m.name}
-                                        {m.baseName && <span className="text-sm font-normal text-zinc-400 ml-2">({m.baseName})</span>}
-                                    </div>
-                                </div>
-                                <div className="flex gap-2">
-                                    <button 
-                                        onClick={() => onModify(m)} 
-                                        className="text-sm px-3 py-1 rounded bg-fuchsia-600 hover:bg-fuchsia-500 text-white transition"
-                                    >
-                                        Modify
-                                    </button>
-                                    <button 
-                                        onClick={() => onDelete(m.name)} 
-                                        className="text-sm px-3 py-1 rounded bg-red-600 hover:bg-red-500 text-white transition"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-
-                <div className="flex justify-end pt-4 border-t border-[#2B2F36] mt-6">
-                    <button onClick={onClose} className="px-4 py-2 rounded-md text-zinc-300 hover:bg-[#202227] transition">Close</button>
+        {customMiscrits.length === 0 ? (
+          <div className="text-center py-10 text-zinc-500">You have no custom miscrit profiles saved locally.</div>
+        ) : (
+          <ul className="space-y-3">
+            {customMiscrits.map(m => (
+              <li key={m.name} className="flex items-center justify-between p-3 border border-[#2B2F36] rounded-lg bg-[#14161A]">
+                <div>
+                  <div className="font-medium text-zinc-100">
+                    {m.name}
+                    {m.baseName && <span className="text-sm font-normal text-zinc-400 ml-2">({m.baseName})</span>}
+                  </div>
                 </div>
-            </div>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => onModify(m)} 
+                    className="text-sm px-3 py-1 rounded bg-fuchsia-600 hover:bg-fuchsia-500 text-white transition"
+                  >
+                    Modify
+                  </button>
+                  <button 
+                    onClick={() => onDelete(m.name)} 
+                    className="text-sm px-3 py-1 rounded bg-red-600 hover:bg-red-500 text-white transition"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="flex justify-end pt-4 border-t border-[#2B2F36] mt-6">
+          <button onClick={onClose} className="px-4 py-2 rounded-md text-zinc-300 hover:bg-[#202227] transition">Close</button>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 
@@ -269,23 +440,6 @@ const DEFAULT_DB_FILENAME = 'miscritsdb.json';
 
 function App({ initialMiscrits }) {
   const defaultStats = { PA:60, EA:60, PD:60, ED:60, SPD:60, HP:153 };
-
-// -- Reset helpers (base stats / base stats with avg def for defender) --
-const refreshAttacker = useCallback(() => {
-  if (!attacker) return;
-  setAStats({ ...(attacker.stats || defaultStats) });
-}, [attacker]);
-
-const refreshDefender = useCallback(() => {
-  if (!defender) return;
-  const base = { ...(defender.stats || defaultStats) };
-  if (avgDef) {
-    base.ED = Number(mapAvgValue(base.ED, 'ED'));
-    base.PD = Number(mapAvgValue(base.PD, 'PD'));
-  }
-  setDStats(base);
-}, [defender, avgDef]);
-
   const [baseMiscrits, setBaseMiscrits] = useState([]);
   const [customMiscrits, setCustomMiscrits] = useState([]);
   
@@ -297,25 +451,21 @@ const refreshDefender = useCallback(() => {
   const [showCustomOnlyAttacker, setShowCustomOnlyAttacker] = useState(false);
   const [showCustomOnlyDefender, setShowCustomOnlyDefender] = useState(false);
 
-  // --- NUEVO: avgDef toggle para el defensor ---
+  // avgDef toggle para el defensor
   const [avgDef, setAvgDef] = useState(false);
 
   const miscrits = useMemo(() => {
     return [...baseMiscrits, ...customMiscrits];
   }, [baseMiscrits, customMiscrits]);
   
-  // NUEVA LÓGICA: Listas de Miscrits filtradas según el toggle
+  // Listas filtradas según el toggle
   const miscritsAttackerDisplay = useMemo(() => {
-    if (showCustomOnlyAttacker) {
-      return miscrits.filter(m => m.isCustom);
-    }
+    if (showCustomOnlyAttacker) return miscrits.filter(m => m.isCustom);
     return miscrits;
   }, [miscrits, showCustomOnlyAttacker]);
 
   const miscritsDefenderDisplay = useMemo(() => {
-    if (showCustomOnlyDefender) {
-      return miscrits.filter(m => m.isCustom);
-    }
+    if (showCustomOnlyDefender) return miscrits.filter(m => m.isCustom);
     return miscrits;
   }, [miscrits, showCustomOnlyDefender]);
   
@@ -330,36 +480,32 @@ const refreshDefender = useCallback(() => {
   const [loading, setLoading] = useState(true); 
   const [dbError, setDbError] = useState(null); 
 
-
-  // --- Data Processing and Merging ---
+  // Cargar DB
   const processAndSetMiscrits = (parsed) => {
-    // 1. Normalize Base Miscrits and create a lookup map
     const list = Array.isArray(parsed.miscrits) ? parsed.miscrits : (Array.isArray(parsed) ? parsed : []);
     const normalizedBaseMap = new Map();
     const normalizedBase = list.map(m => {
-        const baseMiscrit = { 
-            ...m, 
-            elements: normalizeElements(m.elements || m.type || m.element || []),
-            isCustom: false
-        };
-        normalizedBaseMap.set(m.name, baseMiscrit);
-        return baseMiscrit;
+      const baseMiscrit = { 
+        ...m, 
+        elements: normalizeElements(m.elements || m.type || m.element || []),
+        isCustom: false
+      };
+      normalizedBaseMap.set(m.name, baseMiscrit);
+      return baseMiscrit;
     });
     setBaseMiscrits(normalizedBase);
 
-    // 2. Load and Rebuild Custom Miscrits
     const loadedCustom = loadCustomMiscrits();
     const validCustom = loadedCustom.map(c => {
-        const base = normalizedBaseMap.get(c.baseName);
-        if (!base) return null;
-
-        return {
-            ...base,
-            name: c.name,
-            stats: c.stats,
-            baseName: c.baseName,
-            isCustom: true
-        };
+      const base = normalizedBaseMap.get(c.baseName);
+      if (!base) return null;
+      return {
+        ...base,
+        name: c.name,
+        stats: c.stats,
+        baseName: c.baseName,
+        isCustom: true
+      };
     }).filter(Boolean);
 
     setCustomMiscrits(validCustom);
@@ -368,71 +514,55 @@ const refreshDefender = useCallback(() => {
     setLoading(false);
   }
 
-  // --- Handlers for Custom Miscrits ---
+  // Guardar custom
   const handleSaveCustom = useCallback((newMiscrit) => {
     setCustomMiscrits(prev => {
-        let newList = prev;
-        
-        // CORRECCIÓN 1: Lógica para renombrar (actualizar el mismo perfil)
-        const isRenaming = miscritToEdit && miscritToEdit.name !== newMiscrit.name;
-        
-        if (isRenaming) {
-            // Caso 1: Renombrando - Elimina el perfil anterior y añade el nuevo.
-            newList = prev.filter(m => m.name !== miscritToEdit.name);
-            newList.push(newMiscrit);
-        } else {
-            // Caso 2: Creación nueva o Editando sin renombrar.
-            const existingIndex = prev.findIndex(m => m.name === newMiscrit.name);
-            if (existingIndex > -1) {
-                // Editando sin renombrar: reemplaza el existente
-                newList = prev.map(m => m.name === newMiscrit.name ? newMiscrit : m);
-            } else {
-                // Creación nueva: añade a la lista
-                newList = [...prev, newMiscrit];
-            }
-        }
-
-        saveCustomMiscrits(newList);
-        return newList;
+      let newList = prev;
+      const isRenaming = miscritToEdit && miscritToEdit.name !== newMiscrit.name;
+      if (isRenaming) {
+        newList = prev.filter(m => m.name !== miscritToEdit.name);
+        newList.push(newMiscrit);
+      } else {
+        const existingIndex = prev.findIndex(m => m.name === newMiscrit.name);
+        if (existingIndex > -1) newList = prev.map(m => m.name === newMiscrit.name ? newMiscrit : m);
+        else newList = [...prev, newMiscrit];
+      }
+      saveCustomMiscrits(newList);
+      return newList;
     });
     setAttackerName(newMiscrit.name);
     setAStats(newMiscrit.stats);
-  }, [miscritToEdit, setAttackerName, setAStats]);
-  
+  }, [miscritToEdit]);
+
   const handleEditMiscrit = useCallback((miscrit) => {
-      setMiscritToEdit(miscrit);
-      setShowListModal(false);
-      setShowCustomizer(true);
+    setMiscritToEdit(miscrit);
+    setShowListModal(false);
+    setShowCustomizer(true);
   }, []);
 
   const handleDeleteCustom = useCallback((miscritName) => {
     if (!window.confirm(`Are you sure you want to delete the custom profile "${miscritName}"?`)) return;
-
     setCustomMiscrits(prev => {
-        const newList = prev.filter(m => m.name !== miscritName);
-        saveCustomMiscrits(newList);
-        return newList;
+      const newList = prev.filter(m => m.name !== miscritName);
+      saveCustomMiscrits(newList);
+      return newList;
     });
   }, []);
 
   const closeCustomizer = () => {
-      setMiscritToEdit(null);
-      setShowCustomizer(false);
+    setMiscritToEdit(null);
+    setShowCustomizer(false);
   }
 
-
-  // --- Auto Data Loading (on Mount) ---
+  // Auto load
   useEffect(()=>{
     async function loadDefaultData(){
       try{
         setLoading(true);
         const response = await fetch(`./${DEFAULT_DB_FILENAME}`);
-        
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}. Make sure ${DEFAULT_DB_FILENAME} is in the same directory.`);
-        
         const parsed = await response.json();
         processAndSetMiscrits(parsed);
-
       } catch(err){
         console.error('Error loading default DB:', err);
         setDbError('Error loading default DB. Use the file selector to load manually.');
@@ -442,8 +572,7 @@ const refreshDefender = useCallback(() => {
     if (initialMiscrits && Array.isArray(initialMiscrits)) { processAndSetMiscrits(initialMiscrits); } else { loadDefaultData(); }
   },[]); 
 
-
-  // --- Manual File Upload (Backup) ---
+  // Carga manual (backup)
   async function handleManualFileLoad(e){
     setLoading(true);
     setDbError(null);
@@ -460,62 +589,55 @@ const refreshDefender = useCallback(() => {
     }
   }
 
-
-  // --- Selection Synchronization (Atacante) ---
+  // Sync selección atacante
   useEffect(() => {
     if (miscritsAttackerDisplay.length === 0) {
-        setAttackerName('');
-        return;
+      setAttackerName('');
+      return;
     }
-
     const miscritExists = (name) => miscritsAttackerDisplay.some(m => m.name === name);
-
     if (!attackerName || !miscritExists(attackerName)) {
-        setAttackerName(miscritsAttackerDisplay[0].name);
+      setAttackerName(miscritsAttackerDisplay[0].name);
     }
   }, [miscritsAttackerDisplay, attackerName]);
 
-  // --- Selection Synchronization (Defensor) ---
+  // Sync selección defensor
   useEffect(() => {
     if (miscritsDefenderDisplay.length === 0) {
-        setDefenderName('');
-        return;
+      setDefenderName('');
+      return;
     }
-
     const miscritExists = (name) => miscritsDefenderDisplay.some(m => m.name === name);
     const defaultDefenderName = miscritsDefenderDisplay.length > 1 
-                                  ? miscritsDefenderDisplay[1].name 
-                                  : miscritsDefenderDisplay[0].name;
-
+      ? miscritsDefenderDisplay[1].name 
+      : miscritsDefenderDisplay[0].name;
     if (!defenderName || !miscritExists(defenderName)) {
-        setDefenderName(defaultDefenderName);
+      setDefenderName(defaultDefenderName);
     }
   }, [miscritsDefenderDisplay, defenderName]);
 
+  // Objetos seleccionados
+  const miscritsAll = miscrits; // alias para claridad
+  const attacker = useMemo(()=> miscritsAll.find(m=>m.name===attackerName) || miscritsAll[0] || null, [miscritsAll, attackerName]);
+  const defender = useMemo(()=> miscritsAll.find(m=>m.name===defenderName) || miscritsAll[1] || miscritsAll[0] || null, [miscritsAll, defenderName]);
 
-  // --- Miscrits Selection Logic ---
-  // Estos objetos SIEMPRE deben buscarse en la lista completa (`miscrits`), no en la filtrada.
-  const attacker = useMemo(()=> miscrits.find(m=>m.name===attackerName) || miscrits[0] || null, [miscrits, attackerName]);
-  const defender = useMemo(()=> miscrits.find(m=>m.name===defenderName) || miscrits[1] || miscrits[0] || null, [miscrits, defenderName]);
-
-  // Load stats when a miscrit is selected by search (Base or Custom)
+  // Cargar stats al seleccionar miscrits
   const handleAttackerSelect = useCallback((name) => {
     setAttackerName(name);
-    const selectedMiscrit = miscrits.find(m => m.name === name);
+    const selectedMiscrit = miscritsAll.find(m => m.name === name);
     if (selectedMiscrit) setAStats({ ...(selectedMiscrit.stats || defaultStats) });
-  }, [miscrits, defaultStats]);
+  }, [miscritsAll, defaultStats]);
 
   const handleDefenderSelect = useCallback((name) => {
     setDefenderName(name);
-    const selectedMiscrit = miscrits.find(m => m.name === name);
+    const selectedMiscrit = miscritsAll.find(m => m.name === name);
     if (selectedMiscrit) setDStats({ ...(selectedMiscrit.stats || defaultStats) });
-  }, [miscrits, defaultStats]);
+  }, [miscritsAll, defaultStats]);
 
-
-  // Effect to ensure Attacker stats are loaded when the object changes
+  // Efectos al cambiar objetos
   useEffect(()=>{ 
     if (attacker && attacker.name === attackerName) {
-        setAStats({ ...(attacker.stats || defaultStats) });
+      setAStats({ ...(attacker.stats || defaultStats) });
     }
     setCollapsed(false); 
   }, [attacker?.name, attacker?.isCustom]);
@@ -526,23 +648,15 @@ const refreshDefender = useCallback(() => {
     }
   }, [defender?.name, defender?.isCustom]);
 
-
-  // --- NUEVO: mapAvgValue y efecto que aplica/restaura las defensas ---
+  // avgDef mapping
   const mapAvgValue = (base, kind) => {
-    // kind: 'ED' or 'PD'
-    // Mapeo según lo que pediste:
-    // Elemental: 60→85, 72→99, 83→112, 95→127, 107→141
-    // Física:     60→78, 72→93, 83→108, 95→124, 107→139
     const elemMap = { 60:85, 72:99, 83:112, 95:127, 107:141 };
     const physMap = { 60:78, 72:93, 83:108, 95:124, 107:139 };
-
     const lookup = (kind === 'ED') ? elemMap : physMap;
-    // Si base coincide exactamente con una clave: devolver mapping.
     if (base !== undefined && base !== null) {
       const intBase = Number(base);
       if (lookup[intBase]) return lookup[intBase];
     }
-    // Si no hay match exacto, buscamos la clave más cercana por diferencia absoluta
     if (base !== undefined && base !== null) {
       const keys = Object.keys(lookup).map(k=>Number(k));
       let best = keys[0];
@@ -553,11 +667,9 @@ const refreshDefender = useCallback(() => {
       }
       return lookup[best];
     }
-    // fallback: devolver base mismo
     return base;
   };
 
-  // Cuando cambie el toggle avgDef o cambie el defensor, aplicamos o restauramos
   useEffect(() => {
     if (!defender) return;
     const base = defender.stats || defaultStats;
@@ -566,12 +678,11 @@ const refreshDefender = useCallback(() => {
       const mappedPD = mapAvgValue(base.PD ?? base.PD, 'PD');
       setDStats(prev => ({ ...prev, ED: Number(mappedED), PD: Number(mappedPD) }));
     } else {
-      // restaurar a las stats del defensor (o default)
       setDStats({ ...(defender.stats || defaultStats) });
     }
   }, [avgDef, defender]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // --- Swap Functionality ---
+  // Swap
   const handleSwap = useCallback(() => {
     const tempName = attackerName;
     const tempStats = aStats; 
@@ -582,8 +693,18 @@ const refreshDefender = useCallback(() => {
     setCollapsed(false);
   }, [attackerName, defenderName, aStats, dStats]);
 
+  // NEW: Refresh a base stats (según requisito: volver a stats base, no avgDef)
+  const refreshAttacker = useCallback(() => {
+    if (!attacker) return;
+    setAStats({ ...(attacker.stats || defaultStats) });
+  }, [attacker]);
 
-  // --- Attack List Generation (Omitido por brevedad, es el mismo) ---
+  const refreshDefender = useCallback(() => {
+    if (!defender) return;
+    setDStats({ ...(defender.stats || defaultStats) });
+  }, [defender]);
+
+  // Lista de ataques
   const attacks = useMemo(()=>{
     if (!attacker) return [];
     const list = (tab==='enhanced' ? (attacker.enhancedAttacks||[]) : (attacker.attacks||[]));
@@ -599,7 +720,7 @@ const refreshDefender = useCallback(() => {
     return normalized;
   },[attacker, tab]);
 
-  // Sync selected attack when attack list changes
+  // Sync selected attack
   useEffect(()=>{
     setSelected(prev => {
       if (!prev) return attacks[0] || null;
@@ -608,8 +729,7 @@ const refreshDefender = useCallback(() => {
     });
   }, [attacks, attackerName]);
 
-
-  // --- Damage Calculation Logic (Omitido por brevedad, es el mismo) ---
+  // Cálculo de daño
   const result = useMemo(()=>{
     if (!selected || !attacker || !defender) return null;
     const defenderElements = defender.elements || defender.type || defender.element;
@@ -638,13 +758,12 @@ const refreshDefender = useCallback(() => {
     return { main: mainResult, extra: extraResult };
   }, [selected, attacker, defender, aStats, dStats]);
 
-
   return (
     <div className="max-w-screen-xl mx-auto">
       {/* MODALS */}
       {showCustomizer && (
         <MiscritCustomizerModal 
-          miscrits={miscrits} 
+          miscrits={miscritsAll} 
           baseMiscrits={baseMiscrits}
           defaultStats={defaultStats} 
           onSave={handleSaveCustom} 
@@ -654,10 +773,10 @@ const refreshDefender = useCallback(() => {
       )}
       {showListModal && (
         <CustomMiscritsListModal
-            customMiscrits={customMiscrits}
-            onModify={handleEditMiscrit}
-            onDelete={handleDeleteCustom}
-            onClose={() => setShowListModal(false)}
+          customMiscrits={customMiscrits}
+          onModify={handleEditMiscrit}
+          onDelete={handleDeleteCustom}
+          onClose={() => setShowListModal(false)}
         />
       )}
 
@@ -666,33 +785,32 @@ const refreshDefender = useCallback(() => {
         <h1 className="text-2xl font-semibold">Miscrits Damage Calculator</h1>
         
         {loading ? (
-            <div className="text-zinc-400 font-medium flex items-center gap-2">
-                <svg className="animate-spin h-5 w-5 text-fuchsia-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                Cargando DB...
-            </div>
+          <div className="text-zinc-400 font-medium flex items-center gap-2">
+            <svg className="animate-spin h-5 w-5 text-fuchsia-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+            Cargando DB...
+          </div>
         ) : (
-            <div className="flex items-center gap-3">
-                {dbError && <div className="text-red-400 text-sm">{dbError}</div>}
-                
-                {customMiscrits.length > 0 && (
-                    <button 
-                        onClick={() => setShowListModal(true)} 
-                        className="bg-zinc-700 text-white px-3 py-2 rounded-md font-medium cursor-pointer hover:bg-zinc-600 transition"
-                    >
-                        Show My Miscrits
-                    </button>
-                )}
+          <div className="flex items-center gap-3">
+            {dbError && <div className="text-red-400 text-sm">{dbError}</div>}
+            
+            {customMiscrits.length > 0 && (
+              <button 
+                onClick={() => setShowListModal(true)} 
+                className="bg-zinc-700 text-white px-3 py-2 rounded-md font-medium cursor-pointer hover:bg-zinc-600 transition"
+              >
+                Show My Miscrits
+              </button>
+            )}
 
-                <button 
-                    onClick={() => miscrits.length > 0 && setShowCustomizer(true)} 
-                    disabled={baseMiscrits.length === 0}
-                    className="bg-fuchsia-600 text-white px-3 py-2 rounded-md font-medium cursor-pointer hover:bg-fuchsia-500 transition disabled:opacity-50"
-                >
-                    + Add Custom Miscrit
-                </button>
-            </div>
+            <button 
+              onClick={() => miscritsAll.length > 0 && setShowCustomizer(true)} 
+              disabled={baseMiscrits.length === 0}
+              className="bg-fuchsia-600 text-white px-3 py-2 rounded-md font-medium cursor-pointer hover:bg-fuchsia-500 transition disabled:opacity-50"
+            >
+              + Add Custom Miscrit
+            </button>
+          </div>
         )}
-
       </div>
 
       {loading && (
@@ -703,88 +821,94 @@ const refreshDefender = useCallback(() => {
       {!loading && (
         <div className="grid grid-cols-3 gap-6">
           
-          {/* ATTACKER PANEL (Column 1) */}
+          {/* ATTACKER PANEL (Col 1) */}
           <div className="flex flex-col">
             <div className="flex justify-between items-center h-[44px] mb-2">
-                <label className="block text-sm text-zinc-400">Attacker</label>
-                {/* TOGGLE ATTACKER */}
-                <ToggleSwitch 
-                    checked={showCustomOnlyAttacker} 
-                    onChange={() => setShowCustomOnlyAttacker(p => !p)} 
-                    label="Show Custom Only"
-                />
+              <label className="block text-sm text-zinc-400">Attacker</label>
+              <ToggleSwitch 
+                checked={showCustomOnlyAttacker} 
+                onChange={() => setShowCustomOnlyAttacker(p => !p)} 
+                label="Show Custom Only"
+              />
             </div>
             <div className="mb-3">
               <SearchableSelect 
                 items={miscritsAttackerDisplay} 
                 value={attackerName} 
-                disabled={miscrits.length === 0} 
+                disabled={miscritsAll.length === 0} 
                 onChange={handleAttackerSelect} 
                 placeholder="Search attacker..." 
               />
             </div>
-            <MiscritPanel title="Attacker ·" onRefresh={refreshAttacker} miscrit={attacker} stats={aStats} setStats={setAStats} disabled={miscrits.length === 0} />
+            <MiscritPanel
+              title="Attacker ·"
+              miscrit={attacker}
+              stats={aStats}
+              setStats={setAStats}
+              disabled={miscritsAll.length === 0}
+              onRefresh={refreshAttacker}
+            />
           </div>
           
-          {/* DEFENDER PANEL (Column 2) */}
+          {/* DEFENDER PANEL (Col 2) */}
           <div className="flex flex-col">
             <div className="flex justify-between items-center h-[44px] mb-2">
-                <label className="block text-sm text-zinc-400">Defender</label>
-                {/* NUEVO TOGGLE avg def: entre el label y el show custom only */}
-                <div className="flex items-center gap-3 mr-3">
-                  <ToggleSwitch 
-                      checked={avgDef} 
-                      onChange={() => setAvgDef(p => !p)} 
-                      label="avg def"
-                  />
-                </div>
-                {/* TOGGLE DEFENDER */}
+              <label className="block text-sm text-zinc-400">Defender</label>
+              <div className="flex items-center gap-3 mr-3">
                 <ToggleSwitch 
-                    checked={showCustomOnlyDefender} 
-                    onChange={() => setShowCustomOnlyDefender(p => !p)} 
-                    label="Show Custom Only"
+                  checked={avgDef} 
+                  onChange={() => setAvgDef(p => !p)} 
+                  label="avg def"
                 />
+              </div>
+              <ToggleSwitch 
+                checked={showCustomOnlyDefender} 
+                onChange={() => setShowCustomOnlyDefender(p => !p)} 
+                label="Show Custom Only"
+              />
             </div>
             <div className="mb-3">
               <SearchableSelect 
                 items={miscritsDefenderDisplay} 
                 value={defenderName} 
-                disabled={miscrits.length === 0} 
+                disabled={miscritsAll.length === 0} 
                 onChange={handleDefenderSelect} 
                 placeholder="Search defender..." 
               />
             </div>
-            <MiscritPanel title="Defender ·" onRefresh={refreshDefender} miscrit={defender} stats={dStats} setStats={setDStats} disabled={miscrits.length === 0} />
+            <MiscritPanel
+              title="Defender ·"
+              miscrit={defender}
+              stats={dStats}
+              setStats={setDStats}
+              disabled={miscritsAll.length === 0}
+              onRefresh={refreshDefender}
+            />
           </div>
           
-          {/* ATTACK & RESULTS (Column 3, stacked) */}
+          {/* ATTACK & RESULTS (Col 3) */}
           <div className="col-span-1 flex flex-col gap-6"> 
-            
-            {/* Espacio de alineación (ajustado de 74px a 52px) */}
             <div className="h-[34px]"></div> 
             
             {/* ATTACK PANEL */}
             <div className="card p-6">
               <div className="flex items-center justify-between mb-4">
-                {/* HEADER WITH SWAP BUTTON */}
                 <div className="w-full flex justify-between items-center">
                   <h3 className="text-lg font-semibold">Attacks of {attacker?.name||'—'} ({tab})</h3>
-                  
-                  {/* SWAP BUTTON */}
-                  <button onClick={handleSwap} disabled={miscrits.length === 0} className="text-zinc-400 hover:text-fuchsia-400 transition ml-4 disabled:opacity-30 disabled:cursor-not-allowed" title="Swap Miscrits and Stats">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-left"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+                  <button onClick={handleSwap} disabled={miscritsAll.length === 0} className="text-zinc-400 hover:text-fuchsia-400 transition ml-4 disabled:opacity-30 disabled:cursor-not-allowed" title="Swap Miscrits and Stats">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-left"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
                   </button>
                 </div>
               </div>
               
               <div className="mb-4 pt-2">
-                  <button onClick={()=>setTab('base')} disabled={miscrits.length === 0} className={`px-3 py-1 rounded-full mr-2 disabled:opacity-30 ${tab==='base' ? 'bg-fuchsia-600 text-white' : 'bg-[#101214] text-zinc-300'}`}>Base</button>
-                  <button onClick={()=>setTab('enhanced')} disabled={miscrits.length === 0} className={`px-3 py-1 rounded-full disabled:opacity-30 ${tab==='enhanced' ? 'bg-fuchsia-600 text-white' : 'bg-[#101214] text-zinc-300'}`}>Enhanced</button>
+                <button onClick={()=>setTab('base')} disabled={miscritsAll.length === 0} className={`px-3 py-1 rounded-full mr-2 disabled:opacity-30 ${tab==='base' ? 'bg-fuchsia-600 text-white' : 'bg-[#101214] text-zinc-300'}`}>Base</button>
+                <button onClick={()=>setTab('enhanced')} disabled={miscritsAll.length === 0} className={`px-3 py-1 rounded-full disabled:opacity-30 ${tab==='enhanced' ? 'bg-fuchsia-600 text-white' : 'bg-[#101214] text-zinc-300'}`}>Enhanced</button>
               </div>
 
               {!collapsed && (
                 <ul className="space-y-3 max-h-[44vh] overflow-auto">
-                  {attacks.map(atk => <AttackItemCompact key={atk.name} atk={atk} disabled={miscrits.length === 0} onClick={() => { setSelected(atk); setCollapsed(true); }} active={selected && selected.name===atk.name} />)}
+                  {attacks.map(atk => <AttackItemCompact key={atk.name} atk={atk} disabled={miscritsAll.length === 0} onClick={() => { setSelected(atk); setCollapsed(true); }} active={selected && selected.name===atk.name} />)}
                   {attacks.length===0 && <li className="text-zinc-400">No attacks available</li>}
                 </ul>
               )}
@@ -848,33 +972,35 @@ const refreshDefender = useCallback(() => {
                         <span className="mx-2">·</span>Max: {result.main.total.max}
                       </div>
                     </div>
-<div className="pl-3 mt-2 text-sm opacity-80">
-  {(() => {
-    const withTD = addTrueDamageToRange(result.main.total, selected);
-    return withTD ? (<>with true damage: min {withTD.min} · avg {withTD.avg} · max {withTD.max}</>) : null;
-  })()}
-</div>
+
+                    {/* with true damage (texto adicional) */}
+                    <div className="pl-3 mt-2 text-sm opacity-80">
+                      {(() => {
+                        const withTD = addTrueDamageToRange(result.main.total, selected);
+                        return withTD ? (<>with true damage: min {withTD.min} · avg {withTD.avg} · max {withTD.max}</>) : null;
+                      })()}
+                    </div>
                   </div>
 
                   {/* --- Hits to KO (avg + true dmg) --- */}
-{(() => {
-  if (!defender || !result?.main?.total) return null;
-  const withTD = addTrueDamageToRange(result.main.total, selected);
-  const avgWithTD = withTD ? withTD.avg : result.main.total.avg;
-  const hp = Number(dStats?.HP || 0);
-  if (!avgWithTD || avgWithTD <= 0 || hp <= 0) return null;
-  const hits = Math.ceil(hp / avgWithTD);
-  return (
-    <div className="mt-4 p-3 rounded-lg border border-zinc-700/50 bg-zinc-900/50">
-      <div className="text-sm text-zinc-400">Hits to KO (avg + true dmg):</div>
-      <div className="text-2xl font-bold text-white">{hits}</div>
-    </div>
-  );
-})()}
+                  {(() => {
+                    if (!defender || !result?.main?.total) return null;
+                    const withTD = addTrueDamageToRange(result.main.total, selected);
+                    const avgWithTD = withTD ? withTD.avg : result.main.total.avg;
+                    const hp = Number(dStats?.HP || 0);
+                    if (!avgWithTD || avgWithTD <= 0 || hp <= 0) return null;
+                    const hits = Math.ceil(hp / avgWithTD);
+                    return (
+                      <div className="mt-4 p-3 rounded-lg border border-zinc-700/50 bg-zinc-900/50">
+                        <div className="text-sm text-zinc-400">Hits to KO (avg + true dmg):</div>
+                        <div className="text-2xl font-bold text-white">{hits}</div>
+                      </div>
+                    );
+                  })()}
 
-{/* --- Extra Attack Block --- */}
+                  {/* --- Extra Attack Block --- */}
                   {result.extra && (
-                    <div>
+                    <div className="mt-4">
                       <div className="flex items-center gap-3 mb-2">
                         <Chip tone={toneByElement(result.extra.element)}>{result.extra.element}</Chip>
                         <div className="font-semibold">{result.extra.name} · AP: {result.extra.ap}</div>
@@ -900,22 +1026,21 @@ const refreshDefender = useCallback(() => {
                           const mainTotal = result.main.total;
                           const extraTotal = { min: result.extra.per.min, avg: result.extra.per.avg, max: result.extra.per.max };
                           const total = sumTriples(mainTotal, extraTotal);
-                          
-return (
-  <>
-    <div className="text-lg font-bold text-white mt-2">
-      Min: {total.min}
-      <span className="mx-2">·</span>Avg: {total.avg}
-      <span className="mx-2">·</span>Max: {total.max}
-    </div>
-    <div className="mt-2 text-sm opacity-80">
-      {(() => {
-        const withTD = addTrueDamageToRange(total, selected);
-        return withTD ? (<>with true damage: min {withTD.min} — avg {withTD.avg} — max {withTD.max}</>) : null;
-      })()}
-    </div>
-  </>
-);
+                          return (
+                            <>
+                              <div className="text-lg font-bold text-white mt-2">
+                                Min: {total.min}
+                                <span className="mx-2">·</span>Avg: {total.avg}
+                                <span className="mx-2">·</span>Max: {total.max}
+                              </div>
+                              <div className="mt-2 text-sm opacity-80">
+                                {(() => {
+                                  const withTD = addTrueDamageToRange(total, selected);
+                                  return withTD ? (<>with true damage: min {withTD.min} — avg {withTD.avg} — max {withTD.max}</>) : null;
+                                })()}
+                              </div>
+                            </>
+                          );
                         })()}
                       </div>
                     </div>
@@ -928,11 +1053,9 @@ return (
         </div>
       )}
 
-      {/* footer notes removed as requested */}
+      {/* footer notes removed */}
     </div>
   );
 }
-
-
 
 export default App;
