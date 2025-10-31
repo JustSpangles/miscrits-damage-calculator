@@ -723,7 +723,7 @@ const refreshDefender = useCallback(() => {
                 placeholder="Search attacker..." 
               />
             </div>
-            <MiscritPanel title=\"Attacker ·\" onRefresh={refreshAttacker} miscrit={attacker} stats={aStats} setStats={setAStats} disabled={miscrits.length === 0} />
+            <MiscritPanel title="Attacker ·" onRefresh={refreshAttacker} miscrit={attacker} stats={aStats} setStats={setAStats} disabled={miscrits.length === 0} />
           </div>
           
           {/* DEFENDER PANEL (Column 2) */}
@@ -754,7 +754,7 @@ const refreshDefender = useCallback(() => {
                 placeholder="Search defender..." 
               />
             </div>
-            <MiscritPanel title=\"Defender ·\" onRefresh={refreshDefender} miscrit={defender} stats={dStats} setStats={setDStats} disabled={miscrits.length === 0} />
+            <MiscritPanel title="Defender ·" onRefresh={refreshDefender} miscrit={defender} stats={dStats} setStats={setDStats} disabled={miscrits.length === 0} />
           </div>
           
           {/* ATTACK & RESULTS (Column 3, stacked) */}
@@ -848,7 +848,7 @@ const refreshDefender = useCallback(() => {
                         <span className="mx-2">·</span>Max: {result.main.total.max}
                       </div>
                     </div>
-<div className=\"pl-3 mt-2 text-sm opacity-80\">
+<div className="pl-3 mt-2 text-sm opacity-80">
   {(() => {
     const withTD = addTrueDamageToRange(result.main.total, selected);
     return withTD ? (<>with true damage: min {withTD.min} · avg {withTD.avg} · max {withTD.max}</>) : null;
@@ -872,7 +872,7 @@ const refreshDefender = useCallback(() => {
   );
 })()}
 
-{/* --- Extra Attack Block --- */}}
+{/* --- Extra Attack Block --- */}
                   {result.extra && (
                     <div>
                       <div className="flex items-center gap-3 mb-2">
