@@ -173,11 +173,11 @@ function SearchableSelect({ items, value, onChange, placeholder, disabled }){
 }
 
 /* ---------- MiscritPanel (Display) ---------- */
-function MiscritPanel({ title, miscrit, stats, setStats, disabled }){
+function MiscritPanel({ title, miscrit, stats, setStats, disabled, onRefresh }){
   const elements = normalizeElements(miscrit?.elements || miscrit?.type || miscrit?.element || []);
-  const StatInput = useCallback(({ statKey, value, onChange }) => (
-    <div>
-      <label className="block text-xs text-zinc-400">{statKey}</label>
+  const StatInput = useCallback(({ statKey, value, onChange, labelClassName }) => (
+  <div>
+    <label className={`block text-xs ${labelClassName || 'text-zinc-400'}`}>{statKey}</label>
       <input type="number" value={value} onChange={onChange} disabled={disabled}
         className="w-full h-10 rounded-md bg-[#0f1114] border border-[#26292d] px-3 text-zinc-10 disabled:opacity-60 disabled:cursor-not-allowed" />
     </div>
@@ -204,156 +204,17 @@ function MiscritPanel({ title, miscrit, stats, setStats, disabled }){
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <StatInput statKey="EA" value={stats.EA} onChange={(e)=>setStats(p => ({...p, EA: Number(e.target.value||0)}))} />
-        <StatInput statKey="PA" value={stats.PA} onChange={(e)=>setStats(p => ({...p, PA: Number(e.target.value||0)}))} />
-        <StatInput statKey="ED" value={stats.ED} onChange={(e)=>setStats(p => ({...p, ED: Number(e.target.value||0)}))} />
-        <StatInput statKey="PD" value={stats.PD} onChange={(e)=>setStats(p => ({...p, PD: Number(e.target.value||0)}))} />
-        <StatInput statKey="SPD" value={stats.SPD} onChange={(e)=>setStats(p => ({...p, SPD: Number(e.target.value||0)}))} />
-        <StatInput statKey="HP" value={stats.HP} onChange={(e)=>setStats(p => ({...p, HP: Number(e.target.value||0)}))} />
-      </div>
+      <StatInput statKey="HP"  labelClassName="text-green-400"  value={stats.HP}  onChange={(e)=>setStats(p=>({...p, HP:  Number(e.target.value||0)}))} />
+      <StatInput statKey="SPD" labelClassName="text-yellow-300" value={stats.SPD} onChange={(e)=>setStats(p=>({...p, SPD: Number(e.target.value||0)}))} />
+      <StatInput statKey="EA"  labelClassName="text-rose-300"   value={stats.EA}  onChange={(e)=>setStats(p=>({...p, EA:  Number(e.target.value||0)}))} />
+      <StatInput statKey="PA"  labelClassName="text-blue-300"   value={stats.PA}  onChange={(e)=>setStats(p=>({...p, PA:  Number(e.target.value||0)}))} />
+      <StatInput statKey="ED"  labelClassName="text-rose-500"   value={stats.ED}  onChange={(e)=>setStats(p=>({...p, ED:  Number(e.target.value||0)}))} />
+      <StatInput statKey="PD"  labelClassName="text-blue-500"   value={stats.PD}  onChange={(e)=>setStats(p=>({...p, PD:  Number(e.target.value||0)}))} />
     </div>
-  );
-}
-
-/* ---------- Attack item ---------- */
-const AttackItemCompact = ({ atk, onClick, active, disabled }) => (
-  <li>
-    <button onClick={onClick} disabled={disabled} className={`w-full text-left rounded-xl border px-4 py-3 transition ${active ? 'border-fuchsia-600/60 bg-fuchsia-600/10' : 'border-[#2B2F36] hover:border-zinc-500/60 bg-[#14161A]'} disabled:opacity-60 disabled:cursor-not-allowed`}>
-      <div className="flex items-center gap-2">
-        <span className={`chip ${toneByElement(atk.element)}`}>{(atk.element||'physical')}</span>
-        <p className="font-medium text-zinc-100">{atk.name}</p>
-      </div>
-      <p className="text-sm text-zinc-400 mt-1">AP: {atk.ap}{(atk.hits||1)>1 ? ` × ${atk.hits}` : ''}</p>
-    </button>
-  </li>
+  </div>
+</div>
 );
-
-
-/* ---------- Miscrit Customizer Modal (Add/Modify) ---------- */
-function MiscritCustomizerModal({ miscrits, baseMiscrits, defaultStats, onSave, onClose, miscritToEdit }){
-  const isEditing = !!miscritToEdit;
-
-  const [tempBaseName, setTempBaseName] = useState(isEditing ? miscritToEdit.baseName : '');
-  const [customName, setCustomName] = useState(isEditing ? miscritToEdit.name : '');
-  const [customStats, setCustomStats] = useState(isEditing ? miscritToEdit.stats : defaultStats);
-  const [error, setError] = useState(null);
-
-  const baseMiscrit = useMemo(() => baseMiscrits.find(m => m.name === tempBaseName), [baseMiscrits, tempBaseName]);
-
-  useEffect(() => {
-    if (!isEditing && baseMiscrit) {
-      setCustomStats({ ...(baseMiscrit.stats || defaultStats) });
-      setCustomName(baseMiscrit.name);
-    }
-    if (isEditing && miscritToEdit) {
-      setCustomStats({ ...miscritToEdit.stats });
-    }
-  }, [baseMiscrit, isEditing, miscritToEdit]);
-  
-  const handleStatChange = (statKey, value) => {
-    const numValue = Math.max(0, Number(value||0));
-    setCustomStats(p => ({...p, [statKey]: numValue}));
-    setError(null);
-  };
-
-  const handleSave = () => {
-    setError(null);
-
-    const baseName = tempBaseName;
-    if (!baseName) { setError('You must select a base Miscrit.'); return; }
-    
-    const statsValid = Object.values(customStats).every(v => v !== null && v !== undefined && v >= 0);
-    if (!statsValid) { setError('All 6 stats (PA, EA, PD, ED, SPD, HP) must be non-negative numbers.'); return; }
-
-    let finalName = (customName||'').trim().slice(0, 25);
-    if (!finalName) {
-        finalName = `${baseName} (Own)`;
-    }
-
-    // Check for conflict: only check if the new name is different from the old name being edited.
-    const isNameTaken = miscrits.some(m => m.name === finalName && (!isEditing || m.name !== miscritToEdit.name));
-
-    if (isNameTaken) {
-        setError(`A Miscrit named "${finalName}" already exists. Please choose a different custom name.`);
-        return;
-    }
-
-    const baseData = baseMiscrits.find(m => m.name === baseName);
-    const newCustomMiscrit = {
-      ...baseData,
-      name: finalName,
-      stats: customStats,
-      baseName: baseData.name, // Ensure baseName is always the original name
-      isCustom: true
-    };
-
-    onSave(newCustomMiscrit);
-    onClose();
-  };
-  
-  const handleCustomNameChange = (e) => {
-    setCustomName(e.target.value.slice(0, 25));
-    setError(null);
-  }
-
-  return (
-    <div className="modal-overlay">
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <h2 className="text-xl font-semibold mb-6">{isEditing ? 'Modify Custom Miscrit Profile' : 'Create Custom Miscrit Profile'}</h2>
-        
-        {error && (
-            <div className="bg-red-900/40 border border-red-500/80 p-3 rounded-lg text-sm mb-4">
-                {error}
-            </div>
-        )}
-
-        <div className="mb-4">
-          <label className="block text-sm text-zinc-400 mb-1">1. Base Miscrit *</label>
-          <SearchableSelect 
-            items={baseMiscrits.filter(m => !m.isCustom)}
-            value={tempBaseName} 
-            onChange={setTempBaseName} 
-            placeholder="Search base Miscrit..." 
-            disabled={isEditing}
-          />
-        </div>
-        
-        <div className="mb-6">
-          <label className="block text-sm text-zinc-400 mb-1">2. Custom Name (Max 25 chars)</label>
-          <input 
-            type="text" 
-            value={customName} 
-            onChange={handleCustomNameChange}
-            placeholder={tempBaseName ? `${tempBaseName} (Own)` : 'Custom Name'}
-            disabled={!baseMiscrit}
-            className="compact-input w-full"
-            maxLength={25}
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-sm text-zinc-400 mb-3">3. Modified Stats *</label>
-          <div className="grid grid-cols-2 gap-3">
-            <CustomStatInput statKey="EA" value={customStats.EA} isInvalid={customStats.EA<0} onChange={(e)=>handleStatChange('EA', e.target.value)} />
-            <CustomStatInput statKey="PA" value={customStats.PA} isInvalid={customStats.PA<0} onChange={(e)=>handleStatChange('PA', e.target.value)} />
-            <CustomStatInput statKey="ED" value={customStats.ED} isInvalid={customStats.ED<0} onChange={(e)=>handleStatChange('ED', e.target.value)} />
-            <CustomStatInput statKey="PD" value={customStats.PD} isInvalid={customStats.PD<0} onChange={(e)=>handleStatChange('PD', e.target.value)} />
-            <CustomStatInput statKey="SPD" value={customStats.SPD} isInvalid={customStats.SPD<0} onChange={(e)=>handleStatChange('SPD', e.target.value)} />
-            <CustomStatInput statKey="HP" value={customStats.HP} isInvalid={customStats.HP<0} onChange={(e)=>handleStatChange('HP', e.target.value)} />
-          </div>
-        </div>
-
-        <div className="flex justify-end gap-3 pt-4 border-t border-[#2B2F36]">
-          <button onClick={onClose} className="px-4 py-2 rounded-md text-zinc-300 hover:bg-[#202227] transition">Cancel</button>
-          <button onClick={handleSave} disabled={!baseMiscrit || !!error} className="px-4 py-2 rounded-md bg-fuchsia-600 text-white font-medium disabled:opacity-50 transition">
-            {isEditing ? 'Save Changes' : 'Save Profile'}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
 }
-
 /* ---------- Custom Miscrits List Modal (Management) ---------- */
 function CustomMiscritsListModal({ customMiscrits, onModify, onDelete, onClose }) {
     return (
@@ -408,6 +269,23 @@ const DEFAULT_DB_FILENAME = 'miscritsdb.json';
 
 function App({ initialMiscrits }) {
   const defaultStats = { PA:60, EA:60, PD:60, ED:60, SPD:60, HP:153 };
+
+// -- Reset helpers (base stats / base stats with avg def for defender) --
+const refreshAttacker = useCallback(() => {
+  if (!attacker) return;
+  setAStats({ ...(attacker.stats || defaultStats) });
+}, [attacker]);
+
+const refreshDefender = useCallback(() => {
+  if (!defender) return;
+  const base = { ...(defender.stats || defaultStats) };
+  if (avgDef) {
+    base.ED = Number(mapAvgValue(base.ED, 'ED'));
+    base.PD = Number(mapAvgValue(base.PD, 'PD'));
+  }
+  setDStats(base);
+}, [defender, avgDef]);
+
   const [baseMiscrits, setBaseMiscrits] = useState([]);
   const [customMiscrits, setCustomMiscrits] = useState([]);
   
@@ -845,7 +723,7 @@ function App({ initialMiscrits }) {
                 placeholder="Search attacker..." 
               />
             </div>
-            <MiscritPanel title="Attacker ·" miscrit={attacker} stats={aStats} setStats={setAStats} disabled={miscrits.length === 0} />
+            <MiscritPanel title=\"Attacker ·\" onRefresh={refreshAttacker} miscrit={attacker} stats={aStats} setStats={setAStats} disabled={miscrits.length === 0} />
           </div>
           
           {/* DEFENDER PANEL (Column 2) */}
@@ -876,7 +754,7 @@ function App({ initialMiscrits }) {
                 placeholder="Search defender..." 
               />
             </div>
-            <MiscritPanel title="Defender ·" miscrit={defender} stats={dStats} setStats={setDStats} disabled={miscrits.length === 0} />
+            <MiscritPanel title=\"Defender ·\" onRefresh={refreshDefender} miscrit={defender} stats={dStats} setStats={setDStats} disabled={miscrits.length === 0} />
           </div>
           
           {/* ATTACK & RESULTS (Column 3, stacked) */}
@@ -970,7 +848,7 @@ function App({ initialMiscrits }) {
                         <span className="mx-2">·</span>Max: {result.main.total.max}
                       </div>
                     </div>
-<div className="mt-2 text-sm opacity-80">
+<div className=\"pl-3 mt-2 text-sm opacity-80\">
   {(() => {
     const withTD = addTrueDamageToRange(result.main.total, selected);
     return withTD ? (<>with true damage: min {withTD.min} · avg {withTD.avg} · max {withTD.max}</>) : null;
@@ -978,7 +856,23 @@ function App({ initialMiscrits }) {
 </div>
                   </div>
 
-                  {/* --- Extra Attack Block --- */}
+                  {/* --- Hits to KO (avg + true dmg) --- */
+{(() => {
+  if (!defender || !result?.main?.total) return null;
+  const withTD = addTrueDamageToRange(result.main.total, selected);
+  const avgWithTD = withTD ? withTD.avg : result.main.total.avg;
+  const hp = Number(dStats?.HP || 0);
+  if (!avgWithTD || avgWithTD <= 0 || hp <= 0) return null;
+  const hits = Math.ceil(hp / avgWithTD);
+  return (
+    <div className="mt-4 p-3 rounded-lg border border-zinc-700/50 bg-zinc-900/50">
+      <div className="text-sm text-zinc-400">Hits to KO (avg + true dmg):</div>
+      <div className="text-2xl font-bold text-white">{hits}</div>
+    </div>
+  );
+})()}
+
+/* --- Extra Attack Block --- */}
                   {result.extra && (
                     <div>
                       <div className="flex items-center gap-3 mb-2">
