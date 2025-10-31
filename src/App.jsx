@@ -856,7 +856,7 @@ const refreshDefender = useCallback(() => {
 </div>
                   </div>
 
-                  {/* --- Hits to KO (avg + true dmg) --- */
+                  {/* --- Hits to KO (avg + true dmg) --- */}
 {(() => {
   if (!defender || !result?.main?.total) return null;
   const withTD = addTrueDamageToRange(result.main.total, selected);
@@ -872,7 +872,7 @@ const refreshDefender = useCallback(() => {
   );
 })()}
 
-/* --- Extra Attack Block --- */}
+{/* --- Extra Attack Block --- */}}
                   {result.extra && (
                     <div>
                       <div className="flex items-center gap-3 mb-2">
