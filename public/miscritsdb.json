@@ -2293,7 +2293,11 @@
         "name": "Dark Mighty Bash",
         "element": "physical",
         "ap": 5,
-        "hits": 7
+        "hits": 6,
+        "extra": {
+          "element": "physical",
+          "ap": 8
+        }
       }
     ],
     "enhancedAttacks": [
@@ -2337,7 +2341,11 @@
         "name": "Dark Mighty Bash",
         "element": "physical",
         "ap": 6,
-        "hits": 7
+        "hits": 6,
+        "extra": {
+          "element": "physical",
+          "ap": 8
+        }
       }
     ]
   },
@@ -16851,6 +16859,12 @@
         "hits": 1
       },
       {
+        "name": "Dark Relentless Bubbles",
+        "element": "water",
+        "ap": 7,
+        "hits": 6
+      },
+      {
         "name": "Sprinkle",
         "element": "water",
         "ap": 8,
@@ -27490,5 +27504,2134 @@
         "hits": 1
       }
     ]
+  },
+  {
+    "name": "Mucora",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 83,
+      "PA": 60,
+      "ED": 83,
+      "PD": 95
+    },
+    "attacks": [
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Twister",
+        "element": "wind",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Cold Blow",
+        "element": "wind",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Cryostasis",
+        "element": "wind",
+        "ap": 15,
+        "hits": 2
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Twister",
+        "element": "wind",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Cold Blow",
+        "element": "wind",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Cryostasis",
+        "element": "wind",
+        "ap": 16,
+        "hits": 2
+      }
+    ]
+  },
+  {
+    "name": "Goo",
+    "elements": [
+      "water",
+      "earth"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 60,
+      "EA": 95,
+      "PA": 60,
+      "ED": 107,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Crumble",
+        "element": "earth",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Stalactite",
+        "element": "earth",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Spring Shower",
+        "element": "water",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Mudslide",
+        "element": "earth",
+        "ap": 25,
+        "hits": 1
+      },
+      {
+        "name": "Pyrrhic Splash",
+        "element": "water",
+        "ap": 33,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Crumble",
+        "element": "earth",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Stalactite",
+        "element": "earth",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Spring Shower",
+        "element": "water",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Mudslide",
+        "element": "earth",
+        "ap": 28,
+        "hits": 1
+      },
+      {
+        "name": "Pyrrhic Splash",
+        "element": "water",
+        "ap": 33,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Avarus",
+    "elements": [
+      "fire",
+      "wind"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 83,
+      "EA": 95,
+      "PA": 60,
+      "ED": 83,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Cinders",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Gale",
+        "element": "wind",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Campfire",
+        "element": "fire",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Hurricane",
+        "element": "wind",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Infernal Hex",
+        "element": "fire",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Incinerate",
+        "element": "fire",
+        "ap": 9,
+        "hits": 3,
+        "extraDamage": 15,
+        "trueDamage": 15
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Cinders",
+        "element": "fire",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Gale",
+        "element": "wind",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Campfire",
+        "element": "fire",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Hurricane",
+        "element": "wind",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Infernal Hex",
+        "element": "fire",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Incinerate",
+        "element": "fire",
+        "ap": 10,
+        "hits": 3,
+        "extraDamage": 15,
+        "trueDamage": 15
+      }
+    ]
+  },
+  {
+    "name": "Beakka",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 60,
+      "PA": 107,
+      "ED": 72,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Twister",
+        "element": "wind",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Splitting Winds",
+        "element": "wind",
+        "ap": 4,
+        "hits": 3
+      },
+      {
+        "name": "Beak Blast",
+        "element": "physical",
+        "ap": 29,
+        "hits": 1,
+        "extraDamage": 9,
+        "trueDamage": 9
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Twister",
+        "element": "wind",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Splitting Winds",
+        "element": "wind",
+        "ap": 5,
+        "hits": 3
+      },
+      {
+        "name": "Beak Blast",
+        "element": "physical",
+        "ap": 31,
+        "hits": 1,
+        "extraDamage": 9,
+        "trueDamage": 9
+      }
+    ]
+  },
+  {
+    "name": "Whispen",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 95,
+      "EA": 95,
+      "PA": 60,
+      "ED": 72,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Gust",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Cyclone",
+        "element": "wind",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Wallop",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Ghastly Gash",
+        "element": "wind",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Soul Shudder",
+        "element": "wind",
+        "ap": 14,
+        "hits": 2
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Gust",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Cyclone",
+        "element": "wind",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Wallop",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Ghastly Gash",
+        "element": "wind",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Soul Shudder",
+        "element": "wind",
+        "ap": 15,
+        "hits": 2
+      }
+    ]
+  },
+  {
+    "name": "Fickra",
+    "elements": [
+      "lightning"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 72,
+      "EA": 83,
+      "PA": 60,
+      "ED": 83,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Flash",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Spark Flicker",
+        "element": "lightning",
+        "ap": 5,
+        "hits": 2
+      },
+      {
+        "name": "Mane Charge",
+        "element": "lightning",
+        "ap": 16,
+        "hits": 2
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Flash",
+        "element": "lightning",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 24,
+        "hits": 1
+      },
+      {
+        "name": "Spark Flicker",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 2
+      },
+      {
+        "name": "Mane Charge",
+        "element": "lightning",
+        "ap": 16,
+        "hits": 2
+      }
+    ]
+  },
+  {
+    "name": "Pirate Bludger",
+    "elements": [
+      "earth"
+    ],
+    "stats": {
+      "HP": 195,
+      "SPD": 72,
+      "EA": 60,
+      "PA": 95,
+      "ED": 83,
+      "PD": 60
+    },
+    "attacks": [
+      {
+        "name": "Crumble",
+        "element": "earth",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Hit",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Landslide",
+        "element": "earth",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Rocky Waves",
+        "element": "earth",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Pirate Tail Wham",
+        "element": "physical",
+        "ap": 25,
+        "hits": 1,
+        "extra": {
+          "element": "physical",
+          "ap": 15
+        }
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Crumble",
+        "element": "earth",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Hit",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Landslide",
+        "element": "earth",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Rocky Waves",
+        "element": "earth",
+        "ap": 13,
+        "hits": 1
+      },
+      {
+        "name": "Pirate Tail Wham",
+        "element": "physical",
+        "ap": 25,
+        "hits": 1,
+        "extra": {
+          "element": "physical",
+          "ap": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "Lutox",
+    "elements": [
+      "earth"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 95,
+      "PA": 83,
+      "ED": 72,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Rubble",
+        "element": "earth",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Rock Throw",
+        "element": "earth",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Gem Mash",
+        "element": "earth",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Solid Strike",
+        "element": "physical",
+        "ap": 25,
+        "hits": 1,
+        "extraDamage": 7,
+        "trueDamage": 7
+      },
+      {
+        "name": "Mud Plaster",
+        "element": "earth",
+        "ap": 28,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Rubble",
+        "element": "earth",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Rock Throw",
+        "element": "earth",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Gem Mash",
+        "element": "earth",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Solid Strike",
+        "element": "physical",
+        "ap": 29,
+        "hits": 1,
+        "extraDamage": 7,
+        "trueDamage": 7
+      },
+      {
+        "name": "Mud Plaster",
+        "element": "earth",
+        "ap": 32,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Deetlee",
+    "elements": [
+      "earth"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 60,
+      "PA": 83,
+      "ED": 83,
+      "PD": 107
+    },
+    "attacks": [
+      {
+        "name": "Rubble",
+        "element": "earth",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Claw",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Landslide",
+        "element": "earth",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Ocular Abrasion",
+        "element": "earth",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Wicked Blow",
+        "element": "physical",
+        "ap": 0,
+        "hits": 1,
+        "extraDamage": 45,
+        "trueDamage": 45
+      },
+      {
+        "name": "Emboldening Excision",
+        "element": "physical",
+        "ap": 35,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Rubble",
+        "element": "earth",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Claw",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Landslide",
+        "element": "earth",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Ocular Abrasion",
+        "element": "earth",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Wicked Blow",
+        "element": "physical",
+        "ap": 0,
+        "hits": 1,
+        "extraDamage": 50,
+        "trueDamage": 50
+      },
+      {
+        "name": "Emboldening Excision",
+        "element": "physical",
+        "ap": 40,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Ampupine",
+    "elements": [
+      "lightning"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 60,
+      "EA": 60,
+      "PA": 95,
+      "ED": 107,
+      "PD": 107
+    },
+    "attacks": [
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Slash",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Electrify",
+        "element": "lightning",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Hard Jab",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Quill Jolt",
+        "element": "lightning",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Charged-Up Clash",
+        "element": "physical",
+        "ap": 26,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Slash",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Electrify",
+        "element": "lightning",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Hard Jab",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Quill Jolt",
+        "element": "lightning",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Charged-Up Clash",
+        "element": "physical",
+        "ap": 29,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Hekatom",
+    "elements": [
+      "nature",
+      "wind"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 95,
+      "PA": 72,
+      "ED": 72,
+      "PD": 107
+    },
+    "attacks": [
+      {
+        "name": "Wisp",
+        "element": "nature",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Gale",
+        "element": "wind",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Overgrowth",
+        "element": "nature",
+        "ap": 25,
+        "hits": 1
+      },
+      {
+        "name": "Body Binder",
+        "element": "nature",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Spelled Doom",
+        "element": "wind",
+        "ap": 27,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Wisp",
+        "element": "nature",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Breeze",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Gale",
+        "element": "wind",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Overgrowth",
+        "element": "nature",
+        "ap": 27,
+        "hits": 1
+      },
+      {
+        "name": "Body Binder",
+        "element": "nature",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Spelled Doom",
+        "element": "wind",
+        "ap": 30,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Scarecrow Charix",
+    "elements": [
+      "nature"
+    ],
+    "stats": {
+      "HP": 181,
+      "SPD": 72,
+      "EA": 107,
+      "PA": 60,
+      "ED": 83,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Leaves",
+        "element": "nature",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Reap",
+        "element": "nature",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Mother Nature",
+        "element": "nature",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Frightful Char Hail",
+        "element": "nature",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Scarecrow Carnage",
+        "element": "nature",
+        "ap": 28,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Leaves",
+        "element": "nature",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Reap",
+        "element": "nature",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Mother Nature",
+        "element": "nature",
+        "ap": 24,
+        "hits": 1
+      },
+      {
+        "name": "Frightful Char Hail",
+        "element": "nature",
+        "ap": 13,
+        "hits": 1
+      },
+      {
+        "name": "Scarecrow Carnage",
+        "element": "nature",
+        "ap": 32,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Vamp Skustunk",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 60,
+      "PA": 107,
+      "ED": 83,
+      "PD": 95
+    },
+    "attacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Dive",
+        "element": "wind",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Thump",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Smelly Bash",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Vampire Eyed",
+        "element": "physical",
+        "ap": 27,
+        "hits": 1,
+        "extraDamage": 8,
+        "trueDamage": 8
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Dive",
+        "element": "wind",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Thump",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Smelly Bash",
+        "element": "physical",
+        "ap": 14,
+        "hits": 1
+      },
+      {
+        "name": "Vampire Eyed",
+        "element": "physical",
+        "ap": 32,
+        "hits": 1,
+        "extraDamage": 8,
+        "trueDamage": 8
+      }
+    ]
+  },
+  {
+    "name": "Grimm Kiloray",
+    "elements": [
+      "lightning"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 95,
+      "PA": 60,
+      "ED": 107,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Blitzkrieg",
+        "element": "physical",
+        "ap": 12,
+        "hits": 2
+      },
+      {
+        "name": "Grimm Stinging Shock",
+        "element": "lightning",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Grimm Lightning Barb",
+        "element": "lightning",
+        "ap": 27,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Impact",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 24,
+        "hits": 1
+      },
+      {
+        "name": "Blitzkrieg",
+        "element": "physical",
+        "ap": 12,
+        "hits": 2
+      },
+      {
+        "name": "Grimm Stinging Shock",
+        "element": "lightning",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Grimm Lightning Barb",
+        "element": "lightning",
+        "ap": 31,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Rocker Octavio",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 107,
+      "PA": 72,
+      "ED": 95,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Hurricane",
+        "element": "wind",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Chime Strum",
+        "element": "wind",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Rockophony",
+        "element": "wind",
+        "ap": 27,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Hurricane",
+        "element": "wind",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Chime Strum",
+        "element": "wind",
+        "ap": 14,
+        "hits": 1
+      },
+      {
+        "name": "Rockophony",
+        "element": "wind",
+        "ap": 31,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Boo Blazertooth",
+    "elements": [
+      "fire"
+    ],
+    "stats": {
+      "HP": 181,
+      "SPD": 60,
+      "EA": 107,
+      "PA": 72,
+      "ED": 95,
+      "PD": 95
+    },
+    "attacks": [
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bite",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Claw",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Brimstone",
+        "element": "fire",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Boo Blazing Tail",
+        "element": "fire",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Boo Flame Claw",
+        "element": "fire",
+        "ap": 29,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bite",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Claw",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Brimstone",
+        "element": "fire",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Overwhelm",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Boo Blazing Tail",
+        "element": "fire",
+        "ap": 13,
+        "hits": 1
+      },
+      {
+        "name": "Boo Flame Claw",
+        "element": "fire",
+        "ap": 33,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Geneseed",
+    "elements": [
+      "nature"
+    ],
+    "stats": {
+      "HP": 181,
+      "SPD": 72,
+      "EA": 95,
+      "PA": 72,
+      "ED": 107,
+      "PD": 107
+    },
+    "attacks": [
+      {
+        "name": "Vines",
+        "element": "nature",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Slash",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Reap",
+        "element": "nature",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Mother Nature",
+        "element": "nature",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Blooming Doom",
+        "element": "nature",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Silencing Slash",
+        "element": "nature",
+        "ap": 34,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Vines",
+        "element": "nature",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Smack",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Slash",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Reap",
+        "element": "nature",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Mother Nature",
+        "element": "nature",
+        "ap": 24,
+        "hits": 1
+      },
+      {
+        "name": "Blooming Doom",
+        "element": "nature",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Silencing Slash",
+        "element": "nature",
+        "ap": 34,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Sora",
+    "elements": [
+      "wind"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 60,
+      "PA": 95,
+      "ED": 83,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bite",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Dive",
+        "element": "wind",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Wallop",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Tempest",
+        "element": "wind",
+        "ap": 25,
+        "hits": 1
+      },
+      {
+        "name": "Sudden Smack",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Whistlewhack",
+        "element": "physical",
+        "ap": 25,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Blow",
+        "element": "wind",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bite",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Dive",
+        "element": "wind",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Wallop",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Tempest",
+        "element": "wind",
+        "ap": 28,
+        "hits": 1
+      },
+      {
+        "name": "Sudden Smack",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Whistlewhack",
+        "element": "physical",
+        "ap": 28,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Dark Sparkslug",
+    "elements": [
+      "lightning"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 95,
+      "PA": 60,
+      "ED": 95,
+      "PD": 95
+    },
+    "attacks": [
+      {
+        "name": "Spark",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Thump",
+        "element": "physical",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Dark Hard Jolt",
+        "element": "lightning",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Dark Slimeshock",
+        "element": "lightning",
+        "ap": 27,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Spark",
+        "element": "lightning",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 24,
+        "hits": 1
+      },
+      {
+        "name": "Thump",
+        "element": "physical",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Dark Hard Jolt",
+        "element": "lightning",
+        "ap": 13,
+        "hits": 1
+      },
+      {
+        "name": "Dark Slimeshock",
+        "element": "lightning",
+        "ap": 31,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Phoboros",
+    "elements": [
+      "fire"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 72,
+      "EA": 95,
+      "PA": 72,
+      "ED": 95,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Mush",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Passion",
+        "element": "fire",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Destruction",
+        "element": "physical",
+        "ap": 25,
+        "hits": 1
+      },
+      {
+        "name": "Imprisoning Flames",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Hell's Harvest",
+        "element": "fire",
+        "ap": 31,
+        "hits": 1,
+        "extraDamage": 10,
+        "trueDamage": 10
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Swipe",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Mush",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Passion",
+        "element": "fire",
+        "ap": 22,
+        "hits": 1
+      },
+      {
+        "name": "Destruction",
+        "element": "physical",
+        "ap": 28,
+        "hits": 1
+      },
+      {
+        "name": "Imprisoning Flames",
+        "element": "fire",
+        "ap": 9,
+        "hits": 1
+      },
+      {
+        "name": "Hell's Harvest",
+        "element": "fire",
+        "ap": 31,
+        "hits": 1,
+        "extraDamage": 10,
+        "trueDamage": 10
+      }
+    ]
+  },
+  {
+    "name": "Lagoony",
+    "elements": [
+      "water"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 107,
+      "EA": 107,
+      "PA": 60,
+      "ED": 72,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Algae Splat",
+        "element": "water",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Water Slaughter",
+        "element": "water",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Lagoon Swoon",
+        "element": "water",
+        "ap": 35,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Algae Splat",
+        "element": "water",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Water Slaughter",
+        "element": "water",
+        "ap": 7,
+        "hits": 4
+      },
+      {
+        "name": "Lagoon Swoon",
+        "element": "water",
+        "ap": 35,
+        "hits": 1
+      }
+    ]  
   }
 ]
