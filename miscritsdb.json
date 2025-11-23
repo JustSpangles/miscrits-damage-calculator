@@ -810,7 +810,7 @@
       {
         "name": "Turtle Terror",
         "element": "physical",
-        "ap": 9,
+        "ap": 10,
         "hits": 3
       }
     ]
@@ -2234,7 +2234,7 @@
       {
         "name": "Flower Power",
         "element": "nature",
-        "ap": 18,
+        "ap": 16,
         "hits": 2
       }
     ]
@@ -2292,7 +2292,7 @@
       {
         "name": "Dark Mighty Bash",
         "element": "physical",
-        "ap": 5,
+        "ap": 4,
         "hits": 6,
         "extra": {
           "element": "physical",
@@ -2340,7 +2340,7 @@
       {
         "name": "Dark Mighty Bash",
         "element": "physical",
-        "ap": 6,
+        "ap": 5,
         "hits": 6,
         "extra": {
           "element": "physical",
@@ -2416,7 +2416,7 @@
       {
         "name": "Dark Bugs",
         "element": "nature",
-        "ap": 27,
+        "ap": 28,
         "hits": 1
       },
       {
@@ -3414,7 +3414,7 @@
         "hits": 1
       },
       {
-        "name": "Pharoah's Revenge",
+        "name": "Pharaoh's Revenge",
         "element": "earth",
         "ap": 25,
         "hits": 1
@@ -3458,7 +3458,7 @@
         "hits": 1
       },
       {
-        "name": "Pharoah's Revenge",
+        "name": "Pharaoh's Revenge",
         "element": "earth",
         "ap": 29,
         "hits": 1
@@ -5497,8 +5497,10 @@
         "name": "Meowferno",
         "element": "fire",
         "ap": 29,
-        "hits": 1
-      }
+        "hits": 1,
+        "extraDamage": 15,
+        "trueDamage": 15
+      },
     ],
     "enhancedAttacks": [
       {
@@ -5535,7 +5537,9 @@
         "name": "Meowferno",
         "element": "fire",
         "ap": 29,
-        "hits": 1
+        "hits": 1,
+        "extraDamage": 15,
+        "trueDamage": 15
       }
     ]
   },
@@ -5695,7 +5699,9 @@
         "name": "Confucius",
         "element": "wind",
         "ap": 9,
-        "hits": 3
+        "hits": 3,
+        "extraDamage": 15,
+        "trueDamage": 15
       }
     ],
     "enhancedAttacks": [
@@ -5739,7 +5745,9 @@
         "name": "Confucius",
         "element": "wind",
         "ap": 10,
-        "hits": 3
+        "hits": 3,
+        "extraDamage": 15,
+        "trueDamage": 15
       }
     ]
   },
@@ -5968,12 +5976,6 @@
         "hits": 1
       },
       {
-        "name": "Recompose",
-        "element": "earth",
-        "ap": 20,
-        "hits": 1
-      },
-      {
         "name": "Mace Tail",
         "element": "earth",
         "ap": 26,
@@ -6007,12 +6009,6 @@
       },
       {
         "name": "Stone Horn",
-        "element": "earth",
-        "ap": 20,
-        "hits": 1
-      },
-      {
-        "name": "Recompose",
         "element": "earth",
         "ap": 20,
         "hits": 1
@@ -7370,7 +7366,7 @@
         "hits": 1
       },
       {
-        "name": "Rock Throw",
+        "name": "Landslide",
         "element": "earth",
         "ap": 20,
         "hits": 1
@@ -7420,9 +7416,9 @@
         "hits": 1
       },
       {
-        "name": "Rock Throw",
+        "name": "Landslide",
         "element": "earth",
-        "ap": 20,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -7484,10 +7480,10 @@
         "hits": 1
       },
       {
-        "name": "Voltage",
+        "name": "Plasma Pulse",
         "element": "lightning",
-        "ap": 20,
-        "hits": 1
+        "ap": 7,
+        "hits": 4
       },
       {
         "name": "Bow Strike",
@@ -7528,10 +7524,10 @@
         "hits": 1
       },
       {
-        "name": "Voltage",
+        "name": "Plasma Pulse",
         "element": "lightning",
-        "ap": 24,
-        "hits": 1
+        "ap": 7,
+        "hits": 4
       },
       {
         "name": "Bow Strike",
@@ -11042,9 +11038,9 @@
         "hits": 1
       },
       {
-        "name": "Hard Jab",
+        "name": "Destruction",
         "element": "physical",
-        "ap": 20,
+        "ap": 25,
         "hits": 1
       },
       {
@@ -11092,9 +11088,9 @@
         "hits": 1
       },
       {
-        "name": "Hard Jab",
+        "name": "Destruction",
         "element": "physical",
-        "ap": 24,
+        "ap": 25,
         "hits": 1
       },
       {
@@ -11441,7 +11437,9 @@
         "name": "Beaver Chomp",
         "element": "physical",
         "ap": 25,
-        "hits": 1
+        "hits": 1,
+        "extraDamage": 15,
+        "trueDamage": 15
       },
       {
         "name": "Aqua Pura",
@@ -11485,7 +11483,9 @@
         "name": "Beaver Chomp",
         "element": "physical",
         "ap": 30,
-        "hits": 1
+        "hits": 1,
+        "extraDamage": 15,
+        "trueDamage": 15
       },
       {
         "name": "Aqua Pura",
@@ -12016,9 +12016,9 @@
         "hits": 1
       },
       {
-        "name": "Destruction",
+        "name": "Hard Jab",
         "element": "physical",
-        "ap": 25,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -12054,9 +12054,9 @@
         "hits": 1
       },
       {
-        "name": "Destruction",
+        "name": "Hard Jab",
         "element": "physical",
-        "ap": 25,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -12068,7 +12068,7 @@
       {
         "name": "Superpower",
         "element": "physical",
-        "ap": 33,
+        "ap": 32,
         "hits": 1
       },
       {
@@ -12648,13 +12648,13 @@
       {
         "name": "Veto",
         "element": "physical",
-        "ap": 27,
+        "ap": 29,
         "hits": 1
       },
       {
         "name": "The Big Finale",
         "element": "fire",
-        "ap": 8,
+        "ap": 7,
         "hits": 4
       }
     ],
@@ -12698,7 +12698,7 @@
       {
         "name": "Veto",
         "element": "physical",
-        "ap": 30,
+        "ap": 32,
         "hits": 1
       },
       {
@@ -13117,8 +13117,8 @@
       {
         "name": "Fire Storm",
         "element": "fire",
-        "ap": 6,
-        "hits": 5
+        "ap": 5,
+        "hits": 6
       }
     ]
   },
@@ -14368,7 +14368,7 @@
       {
         "name": "Eerie Breeze",
         "element": "wind",
-        "ap": 32,
+        "ap": 30,
         "hits": 1
       }
     ],
@@ -16034,8 +16034,8 @@
         "hits": 1
       },
       {
-        "name": "Hard Jab",
-        "element": "physical",
+        "name": "Mother Nature",
+        "element": "nature",
         "ap": 20,
         "hits": 1
       },
@@ -16084,8 +16084,8 @@
         "hits": 1
       },
       {
-        "name": "Hard Jab",
-        "element": "physical",
+        "name": "Mother Nature",
+        "element": "nature",
         "ap": 24,
         "hits": 1
       },
@@ -16377,7 +16377,7 @@
       {
         "name": "Light Tail Wham",
         "element": "physical",
-        "ap": 32,
+        "ap": 33,
         "hits": 1,
         "extraDamage": 10,
         "trueDamage": 10
@@ -16417,7 +16417,7 @@
       {
         "name": "Light Tail Wham",
         "element": "physical",
-        "ap": 32,
+        "ap": 33,
         "hits": 1,
         "extraDamage": 10,
         "trueDamage": 10
@@ -16624,7 +16624,7 @@
       {
         "name": "Light Smackdown",
         "element": "physical",
-        "ap": 28,
+        "ap": 29,
         "hits": 1
       }
     ],
@@ -16662,7 +16662,7 @@
       {
         "name": "Light Smackdown",
         "element": "physical",
-        "ap": 32,
+        "ap": 33,
         "hits": 1
       }
     ]
@@ -16992,7 +16992,11 @@
         "name": "Anchor Down",
         "element": "water",
         "ap": 5,
-        "hits": 1
+        "hits": 1,
+        "extra": {
+          "element": "physical",
+          "ap": 6
+        }
       },
       {
         "name": "Spray",
@@ -17021,7 +17025,7 @@
       {
         "name": "Tentacle Trench",
         "element": "water",
-        "ap": 30,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -17036,7 +17040,11 @@
         "name": "Anchor Down",
         "element": "water",
         "ap": 6,
-        "hits": 1
+        "hits": 1,
+        "extra": {
+          "element": "physical",
+          "ap": 6
+        }
       },
       {
         "name": "Spray",
@@ -17065,7 +17073,7 @@
       {
         "name": "Tentacle Trench",
         "element": "water",
-        "ap": 30,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -17121,12 +17129,6 @@
         "hits": 1
       },
       {
-        "name": "Cyclone",
-        "element": "wind",
-        "ap": 20,
-        "hits": 1
-      },
-      {
         "name": "Blighted Eerie Breeze",
         "element": "wind",
         "ap": 18,
@@ -17165,12 +17167,6 @@
         "hits": 1
       },
       {
-        "name": "Cyclone",
-        "element": "wind",
-        "ap": 24,
-        "hits": 1
-      },
-      {
         "name": "Blighted Eerie Breeze",
         "element": "wind",
         "ap": 18,
@@ -17201,7 +17197,7 @@
       {
         "name": "Blighted Lightning Barb",
         "element": "physical",
-        "ap": 30,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -17239,7 +17235,7 @@
       {
         "name": "Blighted Lightning Barb",
         "element": "physical",
-        "ap": 30,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -18253,7 +18249,7 @@
       {
         "name": "Dark Ink Splash",
         "element": "water",
-        "ap": 12,
+        "ap": 11,
         "hits": 1
       },
       {
@@ -20097,10 +20093,10 @@
     },
     "attacks": [
       {
-        "name": "Balefire",
+        "name": "Fire Storm",
         "element": "fire",
-        "ap": 25,
-        "hits": 1
+        "ap": 5,
+        "hits": 5
       },
       {
         "name": "Claw",
@@ -20141,10 +20137,10 @@
     ],
     "enhancedAttacks": [
       {
-        "name": "Balefire",
+        "name": "Fire Storm",
         "element": "fire",
-        "ap": 25,
-        "hits": 1
+        "ap": 5,
+        "hits": 6
       },
       {
         "name": "Claw",
@@ -20209,7 +20205,11 @@
         "name": "Zapping Burns",
         "element": "fire",
         "ap": 7,
-        "hits": 1
+        "hits": 1,
+        "extra": {
+          "element": "lightning",
+          "ap": 7
+        }
       },
       {
         "name": "Electrify",
@@ -20265,7 +20265,11 @@
         "name": "Zapping Burns",
         "element": "fire",
         "ap": 7,
-        "hits": 1
+        "hits": 1,
+        "extra": {
+          "element": "lightning",
+          "ap": 7
+        }
       },
       {
         "name": "Electrify",
@@ -20912,7 +20916,7 @@
       {
         "name": "Dark Tainted Flame",
         "element": "fire",
-        "ap": 32,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -20950,7 +20954,7 @@
       {
         "name": "Dark Tainted Flame",
         "element": "fire",
-        "ap": 32,
+        "ap": 33,
         "hits": 1
       },
       {
@@ -24566,7 +24570,7 @@
       {
         "name": "Orbital Annihilation",
         "element": "physical",
-        "ap": 45,
+        "ap": 42,
         "hits": 1
       },
       {
@@ -24610,7 +24614,7 @@
       {
         "name": "Orbital Annihilation",
         "element": "physical",
-        "ap": 48,
+        "ap": 45,
         "hits": 1
       },
       {
@@ -24774,9 +24778,9 @@
         "hits": 1
       },
       {
-        "name": "Spring Shower",
+        "name": "Geyser",
         "element": "water",
-        "ap": 15,
+        "ap": 20,
         "hits": 1
       }
     ],
@@ -24796,7 +24800,7 @@
       {
         "name": "Sterilizing Spritz",
         "element": "water",
-        "ap": 33,
+        "ap": 32,
         "hits": 1
       },
       {
@@ -24812,9 +24816,9 @@
         "hits": 1
       },
       {
-        "name": "Spring Shower",
+        "name": "Geyser",
         "element": "water",
-        "ap": 18,
+        "ap": 24,
         "hits": 1
       }
     ]
@@ -25487,7 +25491,7 @@
       {
         "name": "Supernova",
         "element": "fire",
-        "ap": 33,
+        "ap": 32,
         "hits": 1
       },
       {
@@ -25979,7 +25983,7 @@
       {
         "name": "Tempered Embers",
         "element": "fire",
-        "ap": 27,
+        "ap": 25,
         "hits": 1
       },
       {
@@ -26023,7 +26027,7 @@
       {
         "name": "Tempered Embers",
         "element": "fire",
-        "ap": 30,
+        "ap": 27,
         "hits": 1
       },
       {
@@ -27334,7 +27338,7 @@
         "hits": 1
       },
       {
-        "name": "Ethereal Airstream",
+        "name": "Radiant Airstream",
         "element": "wind",
         "ap": 29,
         "hits": 1
@@ -27372,7 +27376,7 @@
         "hits": 1
       },
       {
-        "name": "Ethereal Airstream",
+        "name": "Radiant Airstream",
         "element": "wind",
         "ap": 33,
         "hits": 1
@@ -27643,7 +27647,7 @@
       {
         "name": "Pyrrhic Splash",
         "element": "water",
-        "ap": 33,
+        "ap": 32,
         "hits": 1
       }
     ],
@@ -27687,13 +27691,13 @@
       {
         "name": "Mudslide",
         "element": "earth",
-        "ap": 28,
+        "ap": 25,
         "hits": 1
       },
       {
         "name": "Pyrrhic Splash",
         "element": "water",
-        "ap": 33,
+        "ap": 32,
         "hits": 1
       }
     ]
@@ -27804,7 +27808,7 @@
       {
         "name": "Overwhelm",
         "element": "physical",
-        "ap": 22,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -28014,13 +28018,13 @@
       {
         "name": "Cyclone",
         "element": "wind",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
         "name": "Wallop",
         "element": "physical",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -28066,7 +28070,7 @@
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 10,
+        "ap": 15,
         "hits": 1
       },
       {
@@ -28104,7 +28108,7 @@
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 12,
+        "ap": 18,
         "hits": 1
       },
       {
@@ -28150,13 +28154,13 @@
       {
         "name": "Hit",
         "element": "physical",
-        "ap": 10,
+        "ap": 7,
         "hits": 1
       },
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 10,
+        "ap": 15,
         "hits": 1
       },
       {
@@ -28192,19 +28196,19 @@
       {
         "name": "Hit",
         "element": "physical",
-        "ap": 12,
+        "ap": 8,
         "hits": 1
       },
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 12,
+        "ap": 18,
         "hits": 1
       },
       {
         "name": "Landslide",
         "element": "earth",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -28260,7 +28264,7 @@
       {
         "name": "Rock Throw",
         "element": "earth",
-        "ap": 10,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -28306,7 +28310,7 @@
       {
         "name": "Rock Throw",
         "element": "earth",
-        "ap": 12,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -28412,7 +28416,7 @@
       {
         "name": "Landslide",
         "element": "earth",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -28522,7 +28526,7 @@
       {
         "name": "Hard Jab",
         "element": "physical",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
@@ -28631,13 +28635,13 @@
       {
         "name": "Overwhelm",
         "element": "physical",
-        "ap": 22,
+        "ap": 20,
         "hits": 1
       },
       {
         "name": "Overgrowth",
         "element": "nature",
-        "ap": 27,
+        "ap": 30,
         "hits": 1
       },
       {
@@ -28733,7 +28737,7 @@
       {
         "name": "Reap",
         "element": "nature",
-        "ap": 18,
+        "ap": 15,
         "hits": 1
       },
       {
@@ -28843,7 +28847,7 @@
       {
         "name": "Thump",
         "element": "physical",
-        "ap": 22,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -28993,7 +28997,7 @@
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 10,
+        "ap": 15,
         "hits": 1
       },
       {
@@ -29031,7 +29035,7 @@
       {
         "name": "Strike",
         "element": "physical",
-        "ap": 12,
+        "ap": 18,
         "hits": 1
       },
       {
@@ -29077,7 +29081,7 @@
       {
         "name": "Bite",
         "element": "physical",
-        "ap": 10,
+        "ap": 7,
         "hits": 1
       },
       {
@@ -29121,7 +29125,7 @@
       {
         "name": "Bite",
         "element": "physical",
-        "ap": 12,
+        "ap": 8,
         "hits": 1
       },
       {
@@ -29139,7 +29143,7 @@
       {
         "name": "Overwhelm",
         "element": "physical",
-        "ap": 22,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -29235,7 +29239,7 @@
       {
         "name": "Reap",
         "element": "nature",
-        "ap": 18,
+        "ap": 15,
         "hits": 1
       },
       {
@@ -29281,7 +29285,7 @@
       {
         "name": "Bite",
         "element": "physical",
-        "ap": 10,
+        "ap": 7,
         "hits": 1
       },
       {
@@ -29325,7 +29329,7 @@
       {
         "name": "Bite",
         "element": "physical",
-        "ap": 12,
+        "ap": 8,
         "hits": 1
       },
       {
@@ -29337,13 +29341,13 @@
       {
         "name": "Wallop",
         "element": "physical",
-        "ap": 22,
+        "ap": 24,
         "hits": 1
       },
       {
         "name": "Tempest",
         "element": "wind",
-        "ap": 28,
+        "ap": 30,
         "hits": 1
       },
       {
@@ -29433,7 +29437,7 @@
       {
         "name": "Thump",
         "element": "physical",
-        "ap": 22,
+        "ap": 20,
         "hits": 1
       },
       {
@@ -29531,13 +29535,13 @@
       {
         "name": "Passion",
         "element": "fire",
-        "ap": 22,
+        "ap": 25,
         "hits": 1
       },
       {
         "name": "Destruction",
         "element": "physical",
-        "ap": 28,
+        "ap": 25,
         "hits": 1
       },
       {
