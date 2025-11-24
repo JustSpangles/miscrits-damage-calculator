@@ -5500,7 +5500,7 @@
         "hits": 1,
         "extraDamage": 15,
         "trueDamage": 15
-      },
+      }
     ],
     "enhancedAttacks": [
       {
@@ -5540,8 +5540,8 @@
         "hits": 1,
         "extraDamage": 15,
         "trueDamage": 15
-      },
-    ]
+      }
+    ],
   },
   {
     "name": "Arigato",
