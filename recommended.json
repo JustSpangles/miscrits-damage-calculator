@@ -2063,5 +2063,33 @@
     "lvl20": "Stony Shield",
     "lvl30": "Temple Stone",
     "lvl35": "Flying Carpet Fragment"
+  },
+  {
+    "miscrit": "Poppet",
+    "lvl10": "Elefauna Flower",
+    "lvl20": "Stony Shield",
+    "lvl30": "Temple Stone",
+    "lvl35": "Flying Carpet Fragment"
+  },
+  {
+    "miscrit": "Nubyll",
+    "lvl10": "Elefauna Flower",
+    "lvl20": "Stony Shield",
+    "lvl30": "Magicite Staff",
+    "lvl35": "Shard of Rudolfe"
+  },
+  {
+    "miscrit": "Elphin",
+    "lvl10": "Elefauna Flower",
+    "lvl20": "Stony Shield",
+    "lvl30": "Temple Stone",
+    "lvl35": "Flying Carpet Fragment"
+  },
+  {
+    "miscrit": "Luvcraft",
+    "lvl10": "Elefauna Flower",
+    "lvl20": "Stony Shield",
+    "lvl30": "Magicite Staff",
+    "lvl35": "Shard of Rudolfe"
   }
 ]

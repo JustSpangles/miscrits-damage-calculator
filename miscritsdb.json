@@ -29637,5 +29637,357 @@
         "hits": 1
       }
     ]  
+  },
+  {
+    "name": "Poppet",
+    "elements": [
+      "fire"
+    ],
+    "stats": {
+      "HP": 181,
+      "SPD": 72,
+      "EA": 95,
+      "PA": 60,
+      "ED": 72,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Bonfire",
+        "element": "fire",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Burn Out",
+        "element": "fire",
+        "ap": 32,
+        "hits": 1
+      },
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Poke",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Bonfire",
+        "element": "fire",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Burn Out",
+        "element": "fire",
+        "ap": 32,
+        "hits": 1
+      },
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 8,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Nubyll",
+    "elements": [
+      "lightning"
+    ],
+    "stats": {
+      "HP": 153,
+      "SPD": 95,
+      "EA": 107,
+      "PA": 60,
+      "ED": 72,
+      "PD": 72
+    },
+    "attacks": [
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Precision Bolt",
+        "element": "lightning",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Enlightning",
+        "element": "lightning",
+        "ap": 27,
+        "hits": 1,
+        "extraDamage": 12,
+        "trueDamage": 12
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 20,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Headbutt",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Precision Bolt",
+        "element": "lightning",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Enlightning",
+        "element": "lightning",
+        "ap": 31,
+        "hits": 1,
+        "extraDamage": 12,
+        "trueDamage": 12
+      },
+      {
+        "name": "Strike",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Zap",
+        "element": "lightning",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Voltage",
+        "element": "lightning",
+        "ap": 24,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Elphin",
+    "elements": [
+      "water"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 60,
+      "EA": 95,
+      "PA": 60,
+      "ED": 83,
+      "PD": 107
+    },
+    "attacks": [
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 15,
+        "hits": 1
+      },
+      {
+        "name": "Roughhose",
+        "element": "water",
+        "ap": 11,
+        "hits": 1
+      },
+      {
+        "name": "Whirlpool",
+        "element": "water",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Opulent Torrent",
+        "element": "water",
+        "ap": 31,
+        "hits": 1
+      },
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Bash",
+        "element": "physical",
+        "ap": 18,
+        "hits": 1
+      },
+      {
+        "name": "Roughhose",
+        "element": "water",
+        "ap": 13,
+        "hits": 1
+      },
+      {
+        "name": "Whirlpool",
+        "element": "water",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Opulent Torrent",
+        "element": "water",
+        "ap": 33,
+        "hits": 1
+      },
+      {
+        "name": "Sprinkle",
+        "element": "water",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Shove",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      }
+    ]
+  },
+  {
+    "name": "Luvcraft",
+    "elements": [
+      "fire"
+    ],
+    "stats": {
+      "HP": 167,
+      "SPD": 95,
+      "EA": 95,
+      "PA": 60,
+      "ED": 83,
+      "PD": 83
+    },
+    "attacks": [
+      {
+        "name": "Toxic Love",
+        "element": "fire",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Eldritch Inferno",
+        "element": "fire",
+        "ap": 30,
+        "hits": 1
+      },
+      {
+        "name": "Passion",
+        "element": "fire",
+        "ap": 20,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 7,
+        "hits": 1
+      },
+      {
+        "name": "Whammy",
+        "element": "physical",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 7,
+        "hits": 1
+      }
+    ],
+    "enhancedAttacks": [
+      {
+        "name": "Toxic Love",
+        "element": "fire",
+        "ap": 10,
+        "hits": 1
+      },
+      {
+        "name": "Eldritch Inferno",
+        "element": "fire",
+        "ap": 33,
+        "hits": 1
+      },
+      {
+        "name": "Passion",
+        "element": "fire",
+        "ap": 25,
+        "hits": 1
+      },
+      {
+        "name": "Slap",
+        "element": "physical",
+        "ap": 8,
+        "hits": 1
+      },
+      {
+        "name": "Whammy",
+        "element": "physical",
+        "ap": 12,
+        "hits": 1
+      },
+      {
+        "name": "Burn",
+        "element": "fire",
+        "ap": 8,
+        "hits": 1
+      }
+    ]
   }
 ]
